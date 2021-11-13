@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "785593676817",
+    "project_id": "plasmahero-mobile",
+    "storage_bucket": "plasmahero-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:785593676817:android:e50e7081ca13756393edb0",
+        "android_client_info": {
+          "package_name": "com.iwan.plasmahero_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "785593676817-f9tepbaocnqc5jsh31fsaua9pj1pbbd6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChVdUanArPlLKF1BVY_8OFDxPmgSY9Hhc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "785593676817-f9tepbaocnqc5jsh31fsaua9pj1pbbd6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
