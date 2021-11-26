@@ -1,6 +1,7 @@
 package com.iwan.plasmahero_mobile.ui.login
 
 import android.app.Activity
+import android.content.Intent
 import androidx.lifecycle.Observer
 import android.os.Bundle
 import androidx.annotation.StringRes
@@ -14,6 +15,7 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.iwan.plasmahero_mobile.HomeActivity
 
 import com.iwan.plasmahero_mobile.R
 
@@ -60,6 +62,9 @@ class LoginActivity : AppCompatActivity() {
 
                 //Complete and destroy login activity once successful
                 finish()
+
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
             }
         })
 
