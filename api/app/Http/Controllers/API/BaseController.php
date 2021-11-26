@@ -10,25 +10,24 @@ use App\Http\Controllers\Controller as Controller;
 class BaseController extends Controller
 {
 
-  public function handleResponse($result, $msg)
+  public function handleResponse($result, $msg = null)
   {
     $res = [
       'success' => true,
       'data'    => $result,
-      'message' => $msg,
     ];
+    if (!empty($msg)) {
+      $res['message'] = $msg;
+    }
     return response()->json($res, 200);
   }
 
-  public function handleError($error, $errorMsg = [], $code = 404)
+  public function handleError($error, $errorMsg = [])
   {
     $res = [
       'success' => false,
       'message' => $error,
     ];
-    if (!empty($errorMsg)) {
-      $res['data'] = $errorMsg;
-    }
-    return response()->json($res, $code);
+    return response()->json($res);
   }
 }

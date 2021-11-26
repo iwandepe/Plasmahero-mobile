@@ -1,25 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use App\Http\Library\ApiHelpers;
-use Illuminate\Http\Request;
+use App\Http\Controllers\API\BaseController;
 use Illuminate\Support\Facades\DB;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
-class DonorController extends Controller
+class DonorController extends BaseController
 {
-    use ApiHelpers;
-
-    public function getAllDonors(Request $request): JsonResponse
+    public function getAllDonors()
     {
+        $donors = DB::table('donors')->get();
 
-        if ($this->isAdmin($request->user())) {
-            $post = DB::table('donors')->get();
-
-            return $this->onSuccess($post, 'Donor Retrieved');
-        }
-
-        return $this->onError(401, 'Unauthorized Access');
+        return $this->handleResponse($donors);
     }
 }
