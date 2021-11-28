@@ -5,8 +5,11 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\API\BaseController;
 use App\Models\Donor;
 use Exception;
+use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class DonorController extends BaseController
 {
@@ -19,7 +22,26 @@ class DonorController extends BaseController
 
     public function storeDonor(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'negative_evidence' => 'required',
+            'positive_evidence' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return $this->handleError($validator->errors());
+        }
+
         try {
+            $nImage = Image::make(file_get_contents($request->negative_evidence));
+            $nImage->stream();
+            $nPath = '/donors/positive/' . time() . ".png";
+            Storage::disk('local')->put('public/' . $nPath, $nImage, 'public');
+
+            $pImage = Image::make(file_get_contents($request->positive_evidence));
+            $pImage->stream();
+            $pPath = '/donors/negative/' . time() . ".png";
+            Storage::disk('local')->put('public/' . $pPath, $pImage, 'public');
+
             $donor = Donor::create([
                 'user_id' => $request->user_id,
                 'address' => $request->address,
@@ -42,7 +64,13 @@ class DonorController extends BaseController
                 'vaccine_name' => $request->vaccine_name,
                 'vaccine_dose' => $request->vaccine_dose,
                 'chronic_disease' => $request->chronic_disease,
+                'negative_evidence_path' => '/storage' . $nPath,
+                'positive_evidence_path' => '/storage' . $pPath,
             ]);
+
+            $baseUrl = env("APP_URL", "localhost:8000");
+            $donor['negative_evidence_path'] = $baseUrl . $donor['negative_evidence_path'];
+            $donor['positive_evidence_path'] = $baseUrl . $donor['positive_evidence_path'];
 
             return $this->handleResponse($donor);
         } catch (Exception $e) {

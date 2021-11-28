@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\DonorController;
+use App\Http\Controllers\API\DonorHistoryController;
 use App\Http\Controllers\API\RecipientController;
 use App\Http\Controllers\API\UserController;
 use App\Models\Recipient;
@@ -20,4 +21,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
   Route::get('users', [UserController::class, 'getAllUsers']);
   Route::get('profile/{id}', [UserController::class, 'getProfileById']);
+
+  Route::get('donors/histories', [DonorHistoryController::class, 'getAllDonorHistories']);
+  Route::get('donors/{donorId}/histories', [DonorHistoryController::class, 'getHistoriesByDonorId']);
+  Route::post('donors/histories', [DonorHistoryController::class, 'storeDonorHistory']);
 });
