@@ -17,6 +17,7 @@ class AuthController extends BaseController
       $user = Auth::user();
       if ($user !== null && $user instanceof User) {
         $data['token'] =  $user->createToken('auth_token')->plainTextToken;
+        $data['id'] = $user->id;
         $data['name'] =  $user->name;
       }
 

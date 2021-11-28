@@ -23,7 +23,7 @@ class CreateDonorsTable extends Migration
             $table->string('phone')->nullable();
             $table->string('gender')->nullable();
             $table->string('blood_type')->nullable();
-            $table->string('blood_reshus')->nullable();
+            $table->string('blood_rhesus')->nullable();
             $table->unsignedSmallInteger('weight')->nullable();
 
             $table->date('negative_test_date')->nullable(); // latest negative swab date
