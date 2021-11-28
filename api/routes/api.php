@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\DonorController;
 use App\Http\Controllers\API\RecipientController;
+use App\Http\Controllers\API\UserController;
 use App\Models\Recipient;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
   Route::get('recipients', [RecipientController::class, 'getAllRecipients']);
   Route::post('recipients', [RecipientController::class, 'storeRecipient']);
+
+  Route::get('users', [UserController::class, 'getAllUsers']);
+  Route::get('profile/{id}', [UserController::class, 'getProfileById']);
 });
