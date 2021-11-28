@@ -25,8 +25,7 @@ class RecipientController extends BaseController
                 'hospital_city' => $request->city,
                 'phone' => $request->age,
                 'blood_type' => $request->blood_type,
-                'blood_rhesus' => $request->blood_rhesus,
-                'status' => 0
+                'blood_rhesus' => $request->blood_rhesus
             ]);
 
             return $this->handleResponse($recipient);

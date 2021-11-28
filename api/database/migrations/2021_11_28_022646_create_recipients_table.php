@@ -25,7 +25,7 @@ class CreateRecipientsTable extends Migration
 
             $table->string('hospital_letter_path')->nullable();
 
-            $table->unsignedSmallInteger('status')->nullable(); // 0 new data, 1 not valid, 2 valid, 4 done
+            $table->boolean('is_valid')->default(false)->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');
 

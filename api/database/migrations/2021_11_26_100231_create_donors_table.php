@@ -44,7 +44,7 @@ class CreateDonorsTable extends Migration
 
             $table->string('chronic_disease')->nullable();
 
-            $table->unsignedSmallInteger('status'); // 0 new data, 1 not valid, 2 valid, 4 done
+            $table->boolean('is_valid')->default(false)->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');
 

@@ -42,7 +42,6 @@ class DonorController extends BaseController
                 'vaccine_name' => $request->vaccine_name,
                 'vaccine_dose' => $request->vaccine_dose,
                 'chronic_disease' => $request->chronic_disease,
-                'status' => 0
             ]);
 
             return $this->handleResponse($donor);

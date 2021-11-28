@@ -5,18 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Recipient extends Model
+class DonorHistory extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
-        'hospital_name',
-        'hospital_city',
-        'phone',
-        'blood_type',
-        'blood_rhesus',
-        'hospital_letter_path',
+        'donor_id',
+        'udd',
+        'donor_date',
+        'donor_evidence_path',
         'is_valid',
     ];
 }

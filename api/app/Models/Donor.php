@@ -32,6 +32,6 @@ class Donor extends Model
         'negative_evidence_path',
         'positive_evidence_path',
         'chronic_disease',
-        'status',
+        'is_valid',
     ];
 }
