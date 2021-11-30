@@ -1,7 +1,9 @@
 package com.iwan.plasmahero_mobile.data.source.remote.api
 
 import com.iwan.plasmahero_mobile.data.source.remote.posts.LoginPost
+import com.iwan.plasmahero_mobile.data.source.remote.posts.RegisterPost
 import com.iwan.plasmahero_mobile.data.source.remote.responses.LoginResponse
+import com.iwan.plasmahero_mobile.data.source.remote.responses.RegisterResponse
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -16,6 +18,11 @@ interface ApiService {
     fun login(
             @Body data: LoginPost
     ): Call<LoginResponse>
+
+    @POST("register")
+    fun register(
+            @Body data: RegisterPost
+    ): Call<RegisterResponse>
 }
 
 object DataService {

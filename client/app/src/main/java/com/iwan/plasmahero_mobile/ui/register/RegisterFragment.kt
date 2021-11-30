@@ -1,10 +1,6 @@
 package com.iwan.plasmahero_mobile.ui.register
 
 import android.annotation.SuppressLint
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.annotation.StringRes
-import androidx.fragment.app.Fragment
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -16,11 +12,17 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.annotation.StringRes
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.iwan.plasmahero_mobile.R
+import com.iwan.plasmahero_mobile.data.entities.User
+import com.iwan.plasmahero_mobile.data.source.remote.posts.RegisterPost
 
 class RegisterFragment : Fragment() {
 
-    private lateinit var loginViewModel: LoginViewModel
+    private lateinit var registerViewModel: RegisterViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -33,15 +35,16 @@ class RegisterFragment : Fragment() {
     @SuppressLint("FragmentLiveDataObserve")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loginViewModel = ViewModelProvider(this).get(com.iwan.plasmahero_mobile.ui.register.LoginViewModel::class.java)
+        registerViewModel = ViewModelProvider(this).get(com.iwan.plasmahero_mobile.ui.register.RegisterViewModel::class.java)
 
+        val etName = view.findViewById<EditText>(R.id.etRegsiterName)
         val etUsername = view.findViewById<EditText>(R.id.etRegisterUsername)
         val etPassword = view.findViewById<EditText>(R.id.etRegisterPassword)
         val etConfirmPassword = view.findViewById<EditText>(R.id.etRegisterConfirmPassword)
         val btnRegister = view.findViewById<Button>(R.id.btnRegister)
         val loadingProgressBar = view.findViewById<ProgressBar>(R.id.loading)
 
-        loginViewModel.loginFormState.observe(this,
+        registerViewModel.registerFormState.observe(this,
                 Observer { loginFormState ->
                     if (loginFormState == null) {
                         return@Observer
@@ -55,7 +58,7 @@ class RegisterFragment : Fragment() {
                     }
                 })
 
-        loginViewModel.loginResult.observe(this,
+        registerViewModel.registerResult.observe(this,
                 Observer { loginResult ->
                     loginResult ?: return@Observer
                     loadingProgressBar.visibility = View.GONE
@@ -77,9 +80,11 @@ class RegisterFragment : Fragment() {
             }
 
             override fun afterTextChanged(s: Editable) {
-                loginViewModel.loginDataChanged(
+                registerViewModel.registerDataChanged(
+                        etName.text.toString(),
                         etUsername.text.toString(),
-                        etPassword.text.toString()
+                        etPassword.text.toString(),
+                        etConfirmPassword.text.toString()
                 )
             }
         }
@@ -87,25 +92,21 @@ class RegisterFragment : Fragment() {
         etPassword.addTextChangedListener(afterTextChangedListener)
         etPassword.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                loginViewModel.login(
-                        etUsername.text.toString(),
-                        etPassword.text.toString()
-                )
+                val registerPost = RegisterPost(etName.text.toString(), etUsername.text.toString(), etPassword.text.toString(), etConfirmPassword.text.toString())
+                registerViewModel.register(registerPost)
             }
             false
         }
 
         btnRegister.setOnClickListener {
             loadingProgressBar.visibility = View.VISIBLE
-            loginViewModel.login(
-                    etUsername.text.toString(),
-                    etPassword.text.toString()
-            )
+            val registerPost = RegisterPost(etName.text.toString(), etUsername.text.toString(), etPassword.text.toString(), etConfirmPassword.text.toString())
+            registerViewModel.register(registerPost)
         }
     }
 
-    private fun updateUiWithUser(model: LoggedInUserView) {
-        val welcome = getString(R.string.welcome) + model.displayName
+    private fun updateUiWithUser(model: User) {
+        val welcome = getString(R.string.welcome) + model.name
         // TODO : initiate successful logged in experience
         val appContext = context?.applicationContext ?: return
         Toast.makeText(appContext, welcome, Toast.LENGTH_LONG).show()
