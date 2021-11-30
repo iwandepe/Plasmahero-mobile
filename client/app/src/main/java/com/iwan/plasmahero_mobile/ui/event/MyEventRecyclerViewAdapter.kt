@@ -1,23 +1,31 @@
 package com.iwan.plasmahero_mobile.ui.event
 
+import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.iwan.plasmahero_mobile.R
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 
 import com.iwan.plasmahero_mobile.ui.event.dummy.DummyContent.DummyItem
+import com.iwan.plasmahero_mobile.ui.event.dummy.EventModel
 
 /**
  * [RecyclerView.Adapter] that can display a [DummyItem].
  * TODO: Replace the implementation with code for your data type.
  */
 class MyEventRecyclerViewAdapter(
-    private val values: List<DummyItem>
+    private val values: List<EventModel.EventItem>,
+    private var context: Context? = null
+
 ) : RecyclerView.Adapter<MyEventRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        context = parent.context
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.fragment_item_event, parent, false)
         return ViewHolder(view)
@@ -25,18 +33,27 @@ class MyEventRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.idView.text = item.id
-        holder.contentView.text = item.content
+        val imgHolder = holder.ivEvent
+        holder.tvPrimary.text = item.title
+        holder.tvSecondary.text = item.date
+
+        Glide.with(context!!)
+            .load(item.imgUrl)
+            .override(imgHolder.width, imgHolder.height)
+            .centerCrop()
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .into(imgHolder)
     }
 
     override fun getItemCount(): Int = values.size
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val idView: TextView = view.findViewById(R.id.item_number)
-        val contentView: TextView = view.findViewById(R.id.content)
+        val tvPrimary: TextView = view.findViewById(R.id.tvPrimaryEvent)
+        val tvSecondary: TextView = view.findViewById(R.id.tvSecondaryEvent)
+        val ivEvent: ImageView = view.findViewById(R.id.ivEvent)
 
         override fun toString(): String {
-            return super.toString() + " '" + contentView.text + "'"
+            return super.toString() + " '" + tvPrimary.text + "'"
         }
     }
 }

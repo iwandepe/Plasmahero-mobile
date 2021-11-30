@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.iwan.plasmahero_mobile.R
 
+
 import com.iwan.plasmahero_mobile.ui.udd.dummy.DummyContent.DummyItem
 
 /**
@@ -27,6 +28,7 @@ class MyUddRecyclerViewAdapter(
         val item = values[position]
         holder.idView.text = item.id
         holder.contentView.text = item.content
+
     }
 
     override fun getItemCount(): Int = values.size

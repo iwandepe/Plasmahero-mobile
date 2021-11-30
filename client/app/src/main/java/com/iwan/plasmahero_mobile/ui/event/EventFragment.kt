@@ -10,13 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.iwan.plasmahero_mobile.R
 import com.iwan.plasmahero_mobile.ui.event.dummy.DummyContent
+import com.iwan.plasmahero_mobile.ui.event.dummy.EventModel
 
 /**
  * A fragment representing a list of Items.
  */
 class EventFragment : Fragment() {
 
-    private var columnCount = 2
+    private var columnCount = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +40,7 @@ class EventFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyEventRecyclerViewAdapter(DummyContent.ITEMS)
+                adapter = MyEventRecyclerViewAdapter(EventModel.ITEMS)
             }
         }
         return view

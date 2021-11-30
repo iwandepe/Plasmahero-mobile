@@ -24,7 +24,7 @@ object DummyContent {
     private val COUNT = 25
 
     init {
-        // Add some sample items.
+//        addItem(DummyItem("1", "Haha", "HahaDetails"))
         for (i in 1..COUNT) {
             addItem(createDummyItem(i))
         }
