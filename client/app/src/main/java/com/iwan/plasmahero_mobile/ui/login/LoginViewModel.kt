@@ -1,13 +1,18 @@
 package com.iwan.plasmahero_mobile.ui.login
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.util.Patterns
-import com.google.firebase.auth.FirebaseAuth
 
 import com.iwan.plasmahero_mobile.R
-import com.iwan.plasmahero_mobile.data.model.LoggedInUser
+import com.iwan.plasmahero_mobile.data.entities.User
+import com.iwan.plasmahero_mobile.data.source.remote.RemoteDataSource
+import com.iwan.plasmahero_mobile.data.source.remote.responses.LoginResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LoginViewModel() : ViewModel() {
 
@@ -18,27 +23,19 @@ class LoginViewModel() : ViewModel() {
     val loginResult: LiveData<LoginResult> = _loginResult
 
     fun login(username: String, password: String) {
-        FirebaseAuth.getInstance().signInWithEmailAndPassword(username, password)
-                .addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        val user = LoggedInUser(
-                                it.getResult()?.user?.uid.toString(),
-                                it.getResult()?.user?.displayName ?: "Do not set"
-                        )
+        val call = RemoteDataSource.login(username, password)
+        call.enqueue(object : Callback<LoginResponse> {
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                Log.v("Response", response.body().toString())
+                _loginResult.value = LoginResult(success = User(id = 1, name = username, email = username))
+            }
 
-                        println("login succesfull")
-                        println(user)
-                        _loginResult.value = LoginResult(success = LoggedInUserView(displayName = user.displayName))
-                    } else {
-                        println("login not successfull")
-                        _loginResult.value = LoginResult(error = R.string.login_failed)
-
-                    }
-                }
-                .addOnFailureListener {
-                    println("login on failure")
-                    return@addOnFailureListener
-                }
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                Log.d("Reponse", "Response Login Unsuccessfull")
+                Log.d("Response", t.message.toString())
+                _loginResult.value = LoginResult(error = R.string.login_failed)
+            }
+        })
     }
 
     fun loginDataChanged(username: String, password: String) {
