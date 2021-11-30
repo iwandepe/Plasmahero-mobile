@@ -1,10 +1,8 @@
 package com.iwan.plasmahero_mobile.ui.login
 
 import android.annotation.SuppressLint
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.annotation.StringRes
-import androidx.fragment.app.Fragment
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -16,9 +14,15 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.annotation.StringRes
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.iwan.plasmahero_mobile.HomeActivity
 import com.iwan.plasmahero_mobile.R
 import com.iwan.plasmahero_mobile.data.entities.User
+import com.iwan.plasmahero_mobile.data.source.remote.posts.LoginPost
 
 class LoginFragment : Fragment() {
 
@@ -66,6 +70,14 @@ class LoginFragment : Fragment() {
                     }
                     loginResult.success?.let {
                         updateUiWithUser(it)
+
+                        activity?.setResult(Activity.RESULT_OK)
+
+                        //Complete and destroy login activity once successful
+                        activity?.finish()
+
+                        val intent = Intent(activity, HomeActivity::class.java)
+                        startActivity(intent)
                     }
                 })
 
@@ -89,24 +101,19 @@ class LoginFragment : Fragment() {
         etPassword.addTextChangedListener(afterTextChangedListener)
         etPassword.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                loginViewModel.login(
-                        etUsername.text.toString(),
-                        etPassword.text.toString()
-                )
+                val loginPost = LoginPost(etUsername.text.toString(), etPassword.text.toString())
+                loginViewModel.login(requireContext(), loginPost)
             }
             false
         }
 
         btnLogin.setOnClickListener {
             loadingProgressBar.visibility = View.VISIBLE
-            loginViewModel.login(
-                    etUsername.text.toString(),
-                    etPassword.text.toString()
-            )
+            val loginPost = LoginPost(etUsername.text.toString(), etPassword.text.toString())
+            loginViewModel.login(requireContext(), loginPost)
         }
 
         btnToRegister.setOnClickListener {
-            Toast.makeText(requireContext(), "Daftar di-klik", Toast.LENGTH_LONG).show()
             val navController = findNavController()
             navController.navigate(R.id.action_navigation_login_to_navigation_register)
         }

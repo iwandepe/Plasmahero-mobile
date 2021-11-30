@@ -14,10 +14,13 @@ data class LoginResponse(
 )
 
 data class LoginData(
+        @SerializedName("email")
+        val email: String? = null,
+
         @SerializedName("token")
         val token: String? = null,
 
-        @SerializedName("email")
+        @SerializedName("id")
         val id: Int? = null,
 
         @SerializedName("name")

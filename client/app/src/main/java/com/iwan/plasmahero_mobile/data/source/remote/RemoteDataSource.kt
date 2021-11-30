@@ -12,9 +12,7 @@ import retrofit2.Response
 import java.util.*
 
 object RemoteDataSource {
-    fun login(email: String, password: String): Call<LoginResponse> {
-        val data = LoginPost(email, password)
-
+    fun login(data: LoginPost): Call<LoginResponse> {
         val apiService = DataService.create()
         val call = apiService.login(data)
 

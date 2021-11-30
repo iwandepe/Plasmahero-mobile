@@ -18,5 +18,5 @@ data class RegisterPost(
 
         @SerializedName("confirm_password")
         @Expose
-        val confirmPassword: String?,
+        val confirmPassword: String?
 )

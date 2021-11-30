@@ -1,6 +1,8 @@
 package com.iwan.plasmahero_mobile.ui.register
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -16,6 +18,7 @@ import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.iwan.plasmahero_mobile.HomeActivity
 import com.iwan.plasmahero_mobile.R
 import com.iwan.plasmahero_mobile.data.entities.User
 import com.iwan.plasmahero_mobile.data.source.remote.posts.RegisterPost
@@ -56,6 +59,9 @@ class RegisterFragment : Fragment() {
                     loginFormState.passwordError?.let {
                         etPassword.error = getString(it)
                     }
+                    loginFormState.confirmPasswordError?.let {
+                        etConfirmPassword.error = getString(it)
+                    }
                 })
 
         registerViewModel.registerResult.observe(this,
@@ -67,6 +73,14 @@ class RegisterFragment : Fragment() {
                     }
                     loginResult.success?.let {
                         updateUiWithUser(it)
+
+                        activity?.setResult(Activity.RESULT_OK)
+
+                        //Complete and destroy login activity once successful
+                        activity?.finish()
+
+                        val intent = Intent(activity, HomeActivity::class.java)
+                        startActivity(intent)
                     }
                 })
 
@@ -90,10 +104,11 @@ class RegisterFragment : Fragment() {
         }
         etUsername.addTextChangedListener(afterTextChangedListener)
         etPassword.addTextChangedListener(afterTextChangedListener)
-        etPassword.setOnEditorActionListener { _, actionId, _ ->
+        etConfirmPassword.addTextChangedListener(afterTextChangedListener)
+        etConfirmPassword.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 val registerPost = RegisterPost(etName.text.toString(), etUsername.text.toString(), etPassword.text.toString(), etConfirmPassword.text.toString())
-                registerViewModel.register(registerPost)
+                registerViewModel.register(requireContext(), registerPost)
             }
             false
         }
@@ -101,7 +116,7 @@ class RegisterFragment : Fragment() {
         btnRegister.setOnClickListener {
             loadingProgressBar.visibility = View.VISIBLE
             val registerPost = RegisterPost(etName.text.toString(), etUsername.text.toString(), etPassword.text.toString(), etConfirmPassword.text.toString())
-            registerViewModel.register(registerPost)
+            registerViewModel.register(requireContext(), registerPost)
         }
     }
 
