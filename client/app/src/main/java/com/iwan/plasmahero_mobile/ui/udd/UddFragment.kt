@@ -8,8 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import com.iwan.plasmahero_mobile.R
 import com.iwan.plasmahero_mobile.ui.udd.dummy.DummyContent
+import android.content.Intent
+import android.net.Uri
+
 
 /**
  * A fragment representing a list of Items.
@@ -31,6 +35,13 @@ class UddFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_udd, container, false)
+        val btnMaps : Button = view.findViewById(R.id.btnMaps)
+        btnMaps.setOnClickListener{
+            val gmmIntentUri: Uri = Uri.parse("geo:0,0?q=pmi")
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+            startActivity(mapIntent)
+        }
 
         // Set the adapter
         if (view is RecyclerView) {

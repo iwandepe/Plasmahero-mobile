@@ -10,16 +10,10 @@ import android.widget.TextView
 import com.iwan.plasmahero_mobile.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.iwan.plasmahero_mobile.data.model.EventModel
 
-import com.iwan.plasmahero_mobile.ui.event.dummy.DummyContent.DummyItem
-import com.iwan.plasmahero_mobile.ui.event.dummy.EventModel
-
-/**
- * [RecyclerView.Adapter] that can display a [DummyItem].
- * TODO: Replace the implementation with code for your data type.
- */
 class MyEventRecyclerViewAdapter(
-    private val values: List<EventModel.EventItem>,
+    private val values: ArrayList<EventModel.EventValue>,
     private var context: Context? = null
 
 ) : RecyclerView.Adapter<MyEventRecyclerViewAdapter.ViewHolder>() {
@@ -36,6 +30,7 @@ class MyEventRecyclerViewAdapter(
         val imgHolder = holder.ivEvent
         holder.tvPrimary.text = item.title
         holder.tvSecondary.text = item.date
+        holder.tvDecs.text = item.desc
 
         Glide.with(context!!)
             .load(item.imgUrl)
@@ -51,6 +46,7 @@ class MyEventRecyclerViewAdapter(
         val tvPrimary: TextView = view.findViewById(R.id.tvPrimaryEvent)
         val tvSecondary: TextView = view.findViewById(R.id.tvSecondaryEvent)
         val ivEvent: ImageView = view.findViewById(R.id.ivEvent)
+        val tvDecs: TextView = view.findViewById(R.id.tvDescEvent)
 
         override fun toString(): String {
             return super.toString() + " '" + tvPrimary.text + "'"

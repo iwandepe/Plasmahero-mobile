@@ -9,7 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.iwan.plasmahero_mobile.R
-import com.iwan.plasmahero_mobile.ui.faq.dummy.DummyContent
+import com.iwan.plasmahero_mobile.data.model.EventModel
+import com.iwan.plasmahero_mobile.data.model.FaqModel
 
 /**
  * A fragment representing a list of Items.
@@ -29,6 +30,10 @@ class FaqFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_faq, container, false)
+        val loadingBar : com.google.android.material.progressindicator.CircularProgressIndicator = requireActivity().findViewById(R.id.loadingBar)
+
+        val faqList: ArrayList<FaqModel.FaqValue> = FaqModel.fetchFaqData()
+//        loadingBar.visibility = View.GONE
 
         // Set the adapter
         if (view is RecyclerView) {
@@ -37,7 +42,10 @@ class FaqFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyFaqRecyclerViewAdapter(DummyContent.ITEMS)
+
+                adapter = MyFaqRecyclerViewAdapter(faqList)
+
+
             }
         }
         return view
