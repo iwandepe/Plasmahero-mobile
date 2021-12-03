@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.home.DonorFormFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rlFormlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/fragment_margin"
+            android:paddingTop="@dimen/fragment_margin">
+
+            <TextView
+                android:id="@+id/tvDonorTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_fragment_title"
+                android:textStyle="bold"
+                android:text="@string/text_fill_donor_data_title" />
+
+            <TextView
+                android:id="@+id/tvDonorAddressLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/form_address_label"
+                android:textSize="@dimen/text_form_label"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_below="@id/tvDonorTitle"/>
+
+            <EditText
+                android:id="@+id/etDonorAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_form"
+                android:background="@color/yellow_soft"
+                android:padding="@dimen/form_padding"
+                android:layout_below="@+id/tvDonorAddressLabel"/>
+
+            <TextView
+                android:id="@+id/tvDonorCityLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/form_city_label"
+                android:textSize="@dimen/text_form_label"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_below="@id/etDonorAddress"/>
+
+            <EditText
+                android:id="@+id/etDonorCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_form"
+                android:background="@color/yellow_soft"
+                android:padding="@dimen/form_padding"
+                android:layout_below="@+id/tvDonorCityLabel"/>
+
+            <TextView
+                android:id="@+id/tvDonorAgeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/form_age_label"
+                android:textSize="@dimen/text_form_label"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_below="@id/etDonorCity"/>
+
+            <EditText
+                android:id="@+id/etDonorAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_form"
+                android:background="@color/yellow_soft"
+                android:padding="@dimen/form_padding"
+                android:layout_below="@+id/tvDonorAgeLabel"/>
+
+            <TextView
+                android:id="@+id/tvDonorPhoneLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/form_phone_label"
+                android:textSize="@dimen/text_form_label"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_below="@id/etDonorAge"/>
+
+            <EditText
+                android:id="@+id/etDonorPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_form"
+                android:background="@color/yellow_soft"
+                android:padding="@dimen/form_padding"
+                android:layout_below="@+id/tvDonorPhoneLabel"/>
+
+            <TextView
+                android:id="@+id/tvDonorGenderLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/form_gender_label"
+                android:textSize="@dimen/text_form_label"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_below="@id/etDonorPhone"/>
+
+            <Spinner
+                android:id="@+id/etDonorGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_form"
+                android:background="@color/yellow_soft"
+                android:padding="@dimen/form_padding"
+                android:layout_below="@+id/tvDonorGenderLabel"/>
+
+            <TextView
+                android:id="@+id/tvDonorBloodTypeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/form_blood_type_label"
+                android:textSize="@dimen/text_form_label"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_below="@id/etDonorGender"/>
+
+            <Spinner
+                android:id="@+id/etDonorBloodType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_form"
+                android:background="@color/yellow_soft"
+                android:padding="@dimen/form_padding"
+                android:layout_below="@+id/tvDonorBloodTypeLabel"/>
+
+            <TextView
+                android:id="@+id/tvDonorBloodRhesusLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/form_blood_rhesus_label"
+                android:textSize="@dimen/text_form_label"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_below="@id/etDonorBloodType"/>
+
+            <Spinner
+                android:id="@+id/etDonorBloodRhesus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_form"
+                android:background="@color/yellow_soft"
+                android:padding="@dimen/form_padding"
+                android:layout_below="@+id/tvDonorBloodRhesusLabel"/>
+
+            <TextView
+                android:id="@+id/tvDonorWeightLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/form_weight_label"
+                android:textSize="@dimen/text_form_label"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_below="@id/etDonorBloodRhesus"/>
+
+            <EditText
+                android:id="@+id/etDonorWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_form"
+                android:background="@color/yellow_soft"
+                android:padding="@dimen/form_padding"
+                android:layout_below="@+id/tvDonorWeightLabel"/>
+
+            <TextView
+                android:id="@+id/tvDonorNegativeDateLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/form_negative_date_label"
+                android:textSize="@dimen/text_form_label"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_below="@id/etDonorWeight"/>
+
+            <EditText
+                android:id="@+id/etDonorNegativeDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:textSize="@dimen/text_form"
+                android:background="@color/yellow_soft"
+                android:padding="@dimen/form_padding"
+                android:inputType="date"
+                android:layout_below="@+id/tvDonorNegativeDateLabel"/>
+
+            <TextView
+                android:id="@+id/tvDonorNegativeEvidenceLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/form_negative_evidence"
+                android:textSize="@dimen/text_form_label"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_below="@id/etDonorNegativeDate"/>
+
+            <Button
+                android:id="@+id/btnDonorNegativeEvidence"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_form"
+                android:backgroundTint="@color/yellow_soft"
+                android:textColor="@color/black"
+                android:text="@string/text_upload_file"
+                android:padding="@dimen/form_padding"
+                android:layout_below="@+id/tvDonorNegativeEvidenceLabel"/>
+
+            <TextView
+                android:id="@+id/tvDonorPositiveEvidenceLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/form_positive_evidence"
+                android:textSize="@dimen/text_form_label"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_below="@id/btnDonorNegativeEvidence"/>
+
+            <Button
+                android:id="@+id/btnDonorPositiveEvidence"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_form"
+                android:backgroundTint="@color/yellow_soft"
+                android:text="@string/text_upload_file"
+                android:textColor="@color/black"
+                android:textStyle="normal"
+                android:padding="@dimen/form_padding"
+                android:layout_below="@+id/tvDonorPositiveEvidenceLabel"/>
+
+            <Button
+                android:id="@+id/btnDonorFormSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/button_save"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/yellow"
+                android:layout_marginTop="@dimen/large_margin"
+                android:layout_below="@id/btnDonorPositiveEvidence"/>
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
