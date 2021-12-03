@@ -26,19 +26,19 @@
     <fragment
         android:id="@+id/navigation_faq"
         android:name="com.iwan.plasmahero_mobile.ui.faq.FaqFragment"
-        android:label="@string/title_home"
+        android:label="FAQ"
         tools:layout="@layout/fragment_faq" />
 
     <fragment
         android:id="@+id/navigation_udd"
         android:name="com.iwan.plasmahero_mobile.ui.udd.UddFragment"
-        android:label="@string/title_home"
+        android:label="UDD"
         tools:layout="@layout/fragment_udd" />
 
     <fragment
         android:id="@+id/navigation_event"
         android:name="com.iwan.plasmahero_mobile.ui.event.EventFragment"
-        android:label="@string/title_home"
+        android:label="Event"
         tools:layout="@layout/fragment_event" />
 
 </navigation>

@@ -6,8 +6,9 @@
     android:name="com.iwan.plasmahero_mobile.EventFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
     app:layoutManager="LinearLayoutManager"
     tools:context=".ui.event.EventFragment"
     tools:listitem="@layout/fragment_item_event" />

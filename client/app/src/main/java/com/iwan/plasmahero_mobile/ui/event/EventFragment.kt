@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.iwan.plasmahero_mobile.R
-import com.iwan.plasmahero_mobile.ui.event.dummy.DummyContent
+import com.iwan.plasmahero_mobile.data.model.EventModel
 
 /**
  * A fragment representing a list of Items.
@@ -39,7 +39,10 @@ class EventFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyEventRecyclerViewAdapter(DummyContent.ITEMS)
+
+                val eventList : ArrayList<EventModel.EventValue> = EventModel.fetchEventData()
+                adapter = MyEventRecyclerViewAdapter(eventList)
+
             }
         }
         return view

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Plasmahero-mobile</string>
+    <string name="app_name">Plasmahero</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_login">Login</string>
     <string name="prompt_name">Nama</string>
