@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Plasmahero-mobile</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="title_login">Login</string>
     <string name="prompt_name">Nama</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -20,6 +21,24 @@
     <string name="title_faq">FAQ</string>
     <string name="title_udd">UDD</string>
     <string name="title_event">Event</string>
+    <string name="title_donor_form">Form donor</string>
+    <string name="text_is_registered">Belum memiliki akun?</string>
+    <string name="text_role_fragment">Pilih peran yang kamu!</string>
+    <string name="text_fill_donor_data_title">Isi data donor kamu!</string>
+    <string name="form_age_label">Umur</string>
+    <string name="form_address_label">Alamat</string>
+    <string name="form_city_label">Kota</string>
+    <string name="form_phone_label">Nomor Telepon</string>
+    <string name="form_gender_label">Jenis Kelamin</string>
+    <string name="form_blood_type_label">Golongan Darah</string>
+    <string name="form_blood_rhesus_label">Rhesus Darah</string>
+    <string name="form_weight_label">Berat</string>
+    <string name="form_negative_date_label">Tanggal dinyatakan negatif</string>
+    <string name="form_negative_evidence">Upload bukti negatif</string>
+    <string name="form_positive_evidence">Upload bukti positif</string>
+    <string name="text_upload_file">Upload File</string>
+    <string name="button_save">Simpan</string>
+    <string name="text_file_picked">Ubah file</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -109,4 +128,6 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
