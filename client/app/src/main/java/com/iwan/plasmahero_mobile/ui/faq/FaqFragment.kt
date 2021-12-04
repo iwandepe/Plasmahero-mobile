@@ -12,6 +12,8 @@ import android.view.ViewGroup
 import com.iwan.plasmahero_mobile.R
 import com.iwan.plasmahero_mobile.data.source.remote.RemoteDataSource
 import com.iwan.plasmahero_mobile.data.source.remote.responses.FaqResponse
+import kotlinx.coroutines.async
+import kotlinx.coroutines.runBlocking
 import retrofit2.Response
 
 /**
@@ -20,7 +22,8 @@ import retrofit2.Response
 class FaqFragment : Fragment() {
 
     private var columnCount = 1
-    var faqList: ArrayList<FaqResponse>? = null
+    var faqList: ArrayList<FaqResponse> = ArrayList()
+    var faqAdapter = MyFaqRecyclerViewAdapter(faqList)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,23 +39,23 @@ class FaqFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_faq, container, false)
         val loadingBar : com.google.android.material.progressindicator.CircularProgressIndicator = requireActivity().findViewById(R.id.loadingBar)
 
-        fetchFaqData()
 //        loadingBar.visibility = View.GONE
 
-        // Set the adapter
         if (view is RecyclerView) {
+
             with(view) {
                 layoutManager = when {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-
-                adapter = MyFaqRecyclerViewAdapter(faqList!!)
-
+                faqAdapter.fetchFaqData()
+                adapter = faqAdapter
 
             }
         }
-        return view
+
+         return view
+
     }
 
     companion object {
@@ -70,25 +73,5 @@ class FaqFragment : Fragment() {
                 }
     }
 
-    private fun fetchFaqData() {
-        val call = RemoteDataSource.getFaq()
 
-        call.enqueue(
-            object : retrofit2.Callback<List<FaqResponse>>{
-
-                override fun onFailure(call: retrofit2.Call<List<FaqResponse>>?, t: Throwable?) {
-                    Log.e("getFaqs() Failure", t.toString())
-                }
-
-                override fun onResponse(call: retrofit2.Call<List<FaqResponse>>?, response: Response<List<FaqResponse>>?) {
-                    if(response?.isSuccessful == true){
-                        val rs: List<FaqResponse>? = response.body()
-                        faqList = ArrayList(rs)
-
-                    }
-                }
-            }
-        )
-
-    }
 }

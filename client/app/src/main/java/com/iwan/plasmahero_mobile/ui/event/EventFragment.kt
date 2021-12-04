@@ -20,7 +20,8 @@ import retrofit2.Response
 class EventFragment : Fragment() {
 
     private var columnCount = 2
-    private var eventList : ArrayList<EventResponse>? = null
+    private var eventList : ArrayList<EventResponse> = ArrayList()
+    val eventAdapter = MyEventRecyclerViewAdapter(eventList)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,8 +38,6 @@ class EventFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_event, container, false)
 
-        fetchEventData()
-
         // Set the adapter
         if (view is RecyclerView) {
             with(view) {
@@ -46,8 +45,8 @@ class EventFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-
-                adapter = MyEventRecyclerViewAdapter(eventList!!)
+                eventAdapter.fetchEventData()
+                adapter = eventAdapter
 
             }
         }
@@ -69,24 +68,5 @@ class EventFragment : Fragment() {
             }
     }
 
-    private fun fetchEventData(){
-        val call = RemoteDataSource.getEvent()
 
-        call.enqueue(
-            object : retrofit2.Callback<List<EventResponse>>{
-
-                override fun onFailure(call: retrofit2.Call<List<EventResponse>>?, t: Throwable?) {
-                    Log.e("getEvents() Failure", t.toString())
-                }
-
-                override fun onResponse(call: retrofit2.Call<List<EventResponse>>?, response: Response<List<EventResponse>>?) {
-                    if(response?.isSuccessful == true){
-                        val rs: List<EventResponse>? = response.body()
-                        eventList = ArrayList(rs)
-
-                    }
-                }
-            }
-        )
-    }
 }
