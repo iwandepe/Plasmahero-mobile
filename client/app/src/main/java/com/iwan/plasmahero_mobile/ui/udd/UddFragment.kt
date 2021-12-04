@@ -24,7 +24,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
-import com.iwan.plasmahero_mobile.MainActivity
 
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -33,7 +32,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.iwan.plasmahero_mobile.data.model.UddModel
+import com.iwan.plasmahero_mobile.data.source.remote.responses.UddValue
 import kotlin.math.*
 
 class UddFragment : Fragment() {
@@ -41,7 +40,7 @@ class UddFragment : Fragment() {
     private var columnCount = 1
     private var locationPermissionGranted : Boolean = false
     private var lastKnownLocation: Location? = null
-    private var closestUdd : UddModel.UddValue? = null
+    private var closestUdd : UddValue? = null
     private var gMap: GoogleMap? = null
     private val defaultLocation = LatLng(-7.28, 112.79)
 
@@ -181,11 +180,11 @@ class UddFragment : Fragment() {
         getDeviceLocation()
     }
 
-    private fun getClosestUdd(lat: Double, lng:Double) : UddModel.UddValue? {
-        val uddList = UddModel.getUddList()
+    private fun getClosestUdd(lat: Double, lng:Double) : UddValue? {
+        val uddList = getUddList()
         val curLat = lastKnownLocation!!.latitude
         val curLng = lastKnownLocation!!.longitude
-        var closestUdd : UddModel.UddValue? = null
+        var closestUdd : UddValue? = null
         var distance = 99999
 
         uddList.forEach {
@@ -210,5 +209,22 @@ class UddFragment : Fragment() {
         val c = 2 * atan2(sqrt(a), sqrt(1 - a))
 
         return (AVERAGE_RADIUS_OF_EARTH_KM * c).roundToInt().toInt()
+    }
+
+    fun getUddList(): ArrayList<UddValue>{
+        val uddList : ArrayList<UddValue> = ArrayList()
+
+        uddList.add(UddValue("UDDP", -6.3186859, 106.8345763))
+        uddList.add(UddValue("UDD PMI DKI", -6.1849241, 106.8424645))
+        uddList.add(UddValue("UDD PMI Kota Banda Aceh", 5.5654618, 95.3400146))
+        uddList.add(UddValue("UDD PMI Kota Medan", 3.5993858, 98.6835343))
+        uddList.add(UddValue("UDD PMI Pekanbaru", 0.5190611, 101.4560193))
+        uddList.add(UddValue("UDD PMI Cilacap", -7.6806311, 108.9103799))
+        uddList.add(UddValue("UDD PMI Surabaya", -7.2681377, 112.7371342))
+        uddList.add(UddValue("UDD PMI Kota Malang", -7.9722669, 112.6253048))
+        uddList.add(UddValue("UDD PMI Sidoarjo", -7.4459834, 112.6943168))
+        uddList.add(UddValue("UDD PMI Kab. Jember", -8.1405127, 113.7179428))
+
+        return uddList
     }
 }

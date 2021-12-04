@@ -1,11 +1,11 @@
 package com.iwan.plasmahero_mobile.data.source.remote.api
 
+import com.iwan.plasmahero_mobile.data.model.EventModel
+import com.iwan.plasmahero_mobile.data.model.FaqModel
 import com.iwan.plasmahero_mobile.data.source.remote.posts.DonorPost
 import com.iwan.plasmahero_mobile.data.source.remote.posts.LoginPost
 import com.iwan.plasmahero_mobile.data.source.remote.posts.RegisterPost
-import com.iwan.plasmahero_mobile.data.source.remote.responses.DonorResponse
-import com.iwan.plasmahero_mobile.data.source.remote.responses.LoginResponse
-import com.iwan.plasmahero_mobile.data.source.remote.responses.RegisterResponse
+import com.iwan.plasmahero_mobile.data.source.remote.responses.*
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -14,12 +14,15 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 import java.io.IOException
 
 
-private const val BASE_URL = "http://192.168.0.102:8000/api/"
+//private const val BASE_URL = "http://192.168.0.102:8000/api/"
+private const val BASE_URL = "https://cahindo.xyz/lara/"
+
 
 interface ApiService {
     @POST("login")
@@ -36,6 +39,12 @@ interface ApiService {
     fun createDonor(
             @Body data: DonorPost
     ): Call<DonorResponse>
+
+    @GET("event")
+    fun getEvents() : Call<List<EventResponse>>
+
+    @GET("faq")
+    fun getFaqs() : Call<List<FaqResponse>>
 }
 
 var client = OkHttpClient.Builder().addInterceptor(object : Interceptor {

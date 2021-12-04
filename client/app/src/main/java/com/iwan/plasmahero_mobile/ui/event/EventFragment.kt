@@ -1,6 +1,7 @@
 package com.iwan.plasmahero_mobile.ui.event
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,7 +10,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.iwan.plasmahero_mobile.R
-import com.iwan.plasmahero_mobile.data.model.EventModel
+import com.iwan.plasmahero_mobile.data.source.remote.RemoteDataSource
+import com.iwan.plasmahero_mobile.data.source.remote.responses.EventResponse
+import retrofit2.Response
 
 /**
  * A fragment representing a list of Items.
@@ -17,6 +20,8 @@ import com.iwan.plasmahero_mobile.data.model.EventModel
 class EventFragment : Fragment() {
 
     private var columnCount = 2
+    private var eventList : ArrayList<EventResponse>? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +37,8 @@ class EventFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_event, container, false)
 
+        fetchEventData()
+
         // Set the adapter
         if (view is RecyclerView) {
             with(view) {
@@ -40,8 +47,7 @@ class EventFragment : Fragment() {
                     else -> GridLayoutManager(context, columnCount)
                 }
 
-                val eventList : ArrayList<EventModel.EventValue> = EventModel.fetchEventData()
-                adapter = MyEventRecyclerViewAdapter(eventList)
+                adapter = MyEventRecyclerViewAdapter(eventList!!)
 
             }
         }
@@ -61,5 +67,26 @@ class EventFragment : Fragment() {
                     putInt(ARG_COLUMN_COUNT, columnCount)
                 }
             }
+    }
+
+    private fun fetchEventData(){
+        val call = RemoteDataSource.getEvent()
+
+        call.enqueue(
+            object : retrofit2.Callback<List<EventResponse>>{
+
+                override fun onFailure(call: retrofit2.Call<List<EventResponse>>?, t: Throwable?) {
+                    Log.e("getEvents() Failure", t.toString())
+                }
+
+                override fun onResponse(call: retrofit2.Call<List<EventResponse>>?, response: Response<List<EventResponse>>?) {
+                    if(response?.isSuccessful == true){
+                        val rs: List<EventResponse>? = response.body()
+                        eventList = ArrayList(rs)
+
+                    }
+                }
+            }
+        )
     }
 }

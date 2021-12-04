@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.iwan.plasmahero_mobile.R
 import com.iwan.plasmahero_mobile.data.model.FaqModel
+import com.iwan.plasmahero_mobile.data.source.remote.responses.FaqResponse
 
 class MyFaqRecyclerViewAdapter(
-        private val values: ArrayList<FaqModel.FaqValue>)
+        private val values: ArrayList<FaqResponse>)
     : RecyclerView.Adapter<MyFaqRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

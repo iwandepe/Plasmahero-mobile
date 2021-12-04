@@ -1,6 +1,7 @@
 package com.iwan.plasmahero_mobile.ui.faq
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,8 +10,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.iwan.plasmahero_mobile.R
-import com.iwan.plasmahero_mobile.data.model.EventModel
-import com.iwan.plasmahero_mobile.data.model.FaqModel
+import com.iwan.plasmahero_mobile.data.source.remote.RemoteDataSource
+import com.iwan.plasmahero_mobile.data.source.remote.responses.FaqResponse
+import retrofit2.Response
 
 /**
  * A fragment representing a list of Items.
@@ -18,6 +20,8 @@ import com.iwan.plasmahero_mobile.data.model.FaqModel
 class FaqFragment : Fragment() {
 
     private var columnCount = 1
+    var faqList: ArrayList<FaqResponse>? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +36,7 @@ class FaqFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_faq, container, false)
         val loadingBar : com.google.android.material.progressindicator.CircularProgressIndicator = requireActivity().findViewById(R.id.loadingBar)
 
-        val faqList: ArrayList<FaqModel.FaqValue> = FaqModel.fetchFaqData()
+        fetchFaqData()
 //        loadingBar.visibility = View.GONE
 
         // Set the adapter
@@ -43,7 +47,7 @@ class FaqFragment : Fragment() {
                     else -> GridLayoutManager(context, columnCount)
                 }
 
-                adapter = MyFaqRecyclerViewAdapter(faqList)
+                adapter = MyFaqRecyclerViewAdapter(faqList!!)
 
 
             }
@@ -64,5 +68,27 @@ class FaqFragment : Fragment() {
                         putInt(ARG_COLUMN_COUNT, columnCount)
                     }
                 }
+    }
+
+    private fun fetchFaqData() {
+        val call = RemoteDataSource.getFaq()
+
+        call.enqueue(
+            object : retrofit2.Callback<List<FaqResponse>>{
+
+                override fun onFailure(call: retrofit2.Call<List<FaqResponse>>?, t: Throwable?) {
+                    Log.e("getFaqs() Failure", t.toString())
+                }
+
+                override fun onResponse(call: retrofit2.Call<List<FaqResponse>>?, response: Response<List<FaqResponse>>?) {
+                    if(response?.isSuccessful == true){
+                        val rs: List<FaqResponse>? = response.body()
+                        faqList = ArrayList(rs)
+
+                    }
+                }
+            }
+        )
+
     }
 }

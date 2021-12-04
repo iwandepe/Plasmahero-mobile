@@ -11,9 +11,10 @@ import com.iwan.plasmahero_mobile.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.iwan.plasmahero_mobile.data.model.EventModel
+import com.iwan.plasmahero_mobile.data.source.remote.responses.EventResponse
 
 class MyEventRecyclerViewAdapter(
-    private val values: ArrayList<EventModel.EventValue>,
+    private val values: ArrayList<EventResponse>,
     private var context: Context? = null
 
 ) : RecyclerView.Adapter<MyEventRecyclerViewAdapter.ViewHolder>() {
