@@ -23,6 +23,8 @@
     <string name="title_event">Event</string>
     <string name="title_donor_form">Form donor</string>
     <string name="title_recipient_form">Form pencari donor</string>
+    <string name="headline_option_role">Pilih peran kamu!</string>
+    <string name="title_option_role">Pilih Peran</string>
     <string name="text_is_registered">Belum memiliki akun?</string>
     <string name="text_role_fragment">Pilih peran yang kamu!</string>
     <string name="text_fill_donor_data_title">Isi data donor kamu!</string>
@@ -44,6 +46,8 @@
     <string name="text_upload_file">Upload File</string>
     <string name="button_save">Simpan</string>
     <string name="text_file_picked">Ubah file</string>
+    <string name="text_donor_role">Pendonor</string>
+    <string name="text_recipient_role">Pencari Donor</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

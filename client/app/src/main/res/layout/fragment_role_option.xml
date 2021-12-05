@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.home.RoleOptionFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/headline_option_role"
+        android:layout_above="@id/llOptionsComponent"
+        android:layout_marginBottom="@dimen/large_margin"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textColor="@color/orange"
+        android:textSize="@dimen/fragment_title"/>
+
+    <LinearLayout
+        android:id="@+id/llOptionsComponent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="@dimen/default_margin">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcvDonor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="@color/yellow_soft"
+            android:layout_marginTop="@dimen/large_margin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_option_role_image"
+                    android:src="@drawable/donor_mascot"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_donor_role"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_fragment_title"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcvRecipient"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="@color/yellow_soft"
+            android:layout_marginTop="@dimen/large_margin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_option_role_image"
+                    android:src="@drawable/recipient_mascot"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_recipient_role"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_fragment_title"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</RelativeLayout>
