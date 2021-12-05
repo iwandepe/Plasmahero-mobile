@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.home.RecipientFormFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rlFormlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/fragment_margin"
+            android:paddingTop="@dimen/fragment_margin">
+
+            <TextView
+                android:id="@+id/tvRecipientTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_fragment_title"
+                android:textStyle="bold"
+                android:text="@string/text_fill_recipinet_data_title" />
+
+            <TextView
+                android:id="@+id/tvRecipientHospitalNameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/form_hospital_name_label"
+                android:textSize="@dimen/text_form_label"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_below="@id/tvRecipientTitle"/>
+
+            <EditText
+                android:id="@+id/etRecipientHospitalName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_form"
+                android:background="@color/yellow_soft"
+                android:padding="@dimen/form_padding"
+                android:layout_below="@+id/tvRecipientHospitalNameLabel"/>
+
+            <TextView
+                android:id="@+id/tvRecipientHospitalCityLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/form_hospital_city_label"
+                android:textSize="@dimen/text_form_label"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_below="@id/etRecipientHospitalName"/>
+
+            <EditText
+                android:id="@+id/etRecipientHospitalCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_form"
+                android:background="@color/yellow_soft"
+                android:padding="@dimen/form_padding"
+                android:layout_below="@+id/tvRecipientHospitalCityLabel"/>
+
+            <TextView
+                android:id="@+id/tvRecipientPhoneLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/form_phone_label"
+                android:textSize="@dimen/text_form_label"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_below="@id/etRecipientHospitalCity"/>
+
+            <EditText
+                android:id="@+id/etRecipientPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_form"
+                android:background="@color/yellow_soft"
+                android:padding="@dimen/form_padding"
+                android:layout_below="@+id/tvRecipientPhoneLabel"/>
+
+            <TextView
+                android:id="@+id/tvRecipientBloodTypeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/form_blood_type_label"
+                android:textSize="@dimen/text_form_label"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_below="@id/etRecipientPhone"/>
+
+            <Spinner
+                android:id="@+id/etRecipientBloodType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_form"
+                android:background="@color/yellow_soft"
+                android:padding="@dimen/form_padding"
+                android:layout_below="@+id/tvRecipientBloodTypeLabel"/>
+
+            <TextView
+                android:id="@+id/tvRecipientBloodRhesusLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/form_blood_rhesus_label"
+                android:textSize="@dimen/text_form_label"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_below="@id/etRecipientBloodType"/>
+
+            <Spinner
+                android:id="@+id/etRecipientBloodRhesus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_form"
+                android:background="@color/yellow_soft"
+                android:padding="@dimen/form_padding"
+                android:layout_below="@+id/tvRecipientBloodRhesusLabel"/>
+
+            <TextView
+                android:id="@+id/tvRecipientHospitalLetterLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/form_hospital_letter_label"
+                android:textSize="@dimen/text_form_label"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_below="@id/etRecipientBloodRhesus"/>
+
+            <Button
+                android:id="@+id/btnRecipientHospitalLetter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_form"
+                android:backgroundTint="@color/yellow_soft"
+                android:textColor="@color/black"
+                android:text="@string/text_upload_file"
+                android:padding="@dimen/form_padding"
+                android:layout_below="@+id/tvRecipientHospitalLetterLabel"/>
+
+            <Button
+                android:id="@+id/btnRecipientFormSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/button_save"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/yellow"
+                android:layout_marginTop="@dimen/large_margin"
+                android:layout_below="@id/btnRecipientHospitalLetter"/>
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

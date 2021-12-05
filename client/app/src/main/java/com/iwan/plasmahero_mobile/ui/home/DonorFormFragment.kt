@@ -23,17 +23,10 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.iwan.plasmahero_mobile.R
-import com.iwan.plasmahero_mobile.data.entities.User
 import com.iwan.plasmahero_mobile.data.source.remote.RemoteDataSource
 import com.iwan.plasmahero_mobile.data.source.remote.posts.DonorPost
 import com.iwan.plasmahero_mobile.data.source.remote.responses.DonorResponse
-import com.iwan.plasmahero_mobile.data.source.remote.responses.RegisterResponse
-import com.iwan.plasmahero_mobile.ui.register.RegisterResult
-import com.iwan.plasmahero_mobile.utils.SessionManager
-import com.iwan.plasmahero_mobile.utils.SessionManager.email
-import com.iwan.plasmahero_mobile.utils.SessionManager.name
-import com.iwan.plasmahero_mobile.utils.SessionManager.token
-import com.iwan.plasmahero_mobile.utils.SessionManager.userId
+import com.iwan.plasmahero_mobile.utils.Helper
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -83,10 +76,10 @@ class DonorFormFragment : Fragment() {
                     val permissions = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
                     requestPermissions(permissions, PERMISSION_CODE)
                 } else {
-                    chooseImageGallery(NEGATIVE_IMAGE_CHOOSE);
+                    chooseImageGallery(NEGATIVE_IMAGE_CHOOSE)
                 }
             } else {
-                chooseImageGallery(NEGATIVE_IMAGE_CHOOSE);
+                chooseImageGallery(NEGATIVE_IMAGE_CHOOSE)
             }
         }
 
@@ -96,10 +89,10 @@ class DonorFormFragment : Fragment() {
                     val permissions = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
                     requestPermissions(permissions, PERMISSION_CODE)
                 } else {
-                    chooseImageGallery(POSITIVE_IMAGE_CHOOSE);
+                    chooseImageGallery(POSITIVE_IMAGE_CHOOSE)
                 }
             } else {
-                chooseImageGallery(POSITIVE_IMAGE_CHOOSE);
+                chooseImageGallery(POSITIVE_IMAGE_CHOOSE)
             }
         }
 
@@ -151,7 +144,7 @@ class DonorFormFragment : Fragment() {
 
         btnSubmit.setOnClickListener(View.OnClickListener {
             val donorPost = DonorPost(
-                    user_id = 1,
+                    userId = 1,
                     address = etAddress.text.toString(),
                     city = etCity.text.toString(),
                     age = etAge.text.toString().toIntOrNull(),
@@ -164,6 +157,7 @@ class DonorFormFragment : Fragment() {
                     negativeEvidence = negativeEvidenceBase64,
                     positiveEvidence = positiveEvidenceBase64,
             )
+            Log.v("POST", "Create donor")
             Log.v("VAR: donorPost", donorPost.toString())
 
             val call = RemoteDataSource.createDonor(donorPost)
@@ -179,8 +173,8 @@ class DonorFormFragment : Fragment() {
                 }
 
                 override fun onFailure(call: Call<DonorResponse>, t: Throwable) {
-                    Log.d("Response", "Created Donor Unsuccessfull")
-                    Log.d("Response", t.message.toString())
+                    Log.v("Response", "Created Donor Unsuccessfull")
+                    Log.v("Response", t.message.toString())
                     Toast.makeText(requireContext(), "Create donor data failed", Toast.LENGTH_SHORT).show()
                 }
             })
@@ -206,12 +200,12 @@ class DonorFormFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         val imageUri = data?.data
-        val picturePath = getPathFromUri(requireActivity().applicationContext, imageUri)
+        val picturePath = Helper.getPathFromUri(requireActivity().applicationContext, imageUri)
         btnUploadNegative.text = picturePath
 
         val imageStream: InputStream? = context?.getContentResolver()?.openInputStream(imageUri!!)
         val selectedImage = BitmapFactory.decodeStream(imageStream)
-        val encodedImage: String = "data:image/jpeg;base64," + encodeBitmapToBase64(selectedImage).toString()
+        val encodedImage: String = "data:image/jpeg;base64," + Helper.encodeBitmapToBase64(selectedImage).toString()
 
         Log.v("BASE64 IMAGE", encodedImage)
 
@@ -222,31 +216,6 @@ class DonorFormFragment : Fragment() {
             btnUploadPositive.text = picturePath
             positiveEvidenceBase64 = encodedImage
         }
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun encodeBitmapToBase64(bm: Bitmap): String? {
-        val baos = ByteArrayOutputStream()
-        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-        val b: ByteArray = baos.toByteArray()
-        return Base64.getEncoder().encodeToString(b)
-    }
-
-    fun getPathFromUri(context: Context, uri: Uri?): String? {
-        var result: String? = null
-        val proj = arrayOf(MediaStore.Images.Media.DATA)
-        val cursor: Cursor? = context.getContentResolver().query(uri!!, proj, null, null, null)
-        if (cursor != null) {
-            if (cursor.moveToFirst()) {
-                val column_index: Int = cursor.getColumnIndexOrThrow(proj[0])
-                result = cursor.getString(column_index)
-            }
-            cursor.close()
-        }
-        if (result == null) {
-            result = "Not found"
-        }
-        return result
     }
 
     private fun chooseImageGallery(code: Int) {
@@ -261,7 +230,3 @@ class DonorFormFragment : Fragment() {
         private val PERMISSION_CODE = 1001;
     }
 }
-
-private const val REQUEST_CODE = 13
-private lateinit var filePhoto: File
-private const val FILE_NAME = "photo.jpg"

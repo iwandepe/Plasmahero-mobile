@@ -7,7 +7,7 @@ import java.util.*
 data class DonorPost(
         @SerializedName("user_id")
         @Expose
-        val user_id: Int?,
+        val userId: Int?,
 
         @SerializedName("address")
         @Expose

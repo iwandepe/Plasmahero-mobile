@@ -4,6 +4,7 @@ import com.iwan.plasmahero_mobile.data.model.EventModel
 import com.iwan.plasmahero_mobile.data.model.FaqModel
 import com.iwan.plasmahero_mobile.data.source.remote.posts.DonorPost
 import com.iwan.plasmahero_mobile.data.source.remote.posts.LoginPost
+import com.iwan.plasmahero_mobile.data.source.remote.posts.RecipientPost
 import com.iwan.plasmahero_mobile.data.source.remote.posts.RegisterPost
 import com.iwan.plasmahero_mobile.data.source.remote.responses.*
 import okhttp3.Interceptor
@@ -20,9 +21,8 @@ import retrofit2.http.POST
 import java.io.IOException
 
 
-//private const val BASE_URL = "http://192.168.0.102:8000/api/"
-private const val BASE_URL = "https://cahindo.xyz/lara/"
-
+private const val BASE_URL = "http://192.168.0.102:8000/api/"
+//private const val BASE_URL = "https://cahindo.xyz/lara/"
 
 interface ApiService {
     @POST("login")
@@ -39,6 +39,11 @@ interface ApiService {
     fun createDonor(
             @Body data: DonorPost
     ): Call<DonorResponse>
+
+    @POST("recipients")
+    fun createRecipient(
+        @Body data: RecipientPost
+    ): Call<RecipientResponse>
 
     @GET("event")
     fun getEvents() : Call<List<EventResponse>>

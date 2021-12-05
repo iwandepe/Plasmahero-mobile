@@ -4,6 +4,7 @@ import android.util.Log
 import com.iwan.plasmahero_mobile.data.source.remote.api.DataService
 import com.iwan.plasmahero_mobile.data.source.remote.posts.DonorPost
 import com.iwan.plasmahero_mobile.data.source.remote.posts.LoginPost
+import com.iwan.plasmahero_mobile.data.source.remote.posts.RecipientPost
 import com.iwan.plasmahero_mobile.data.source.remote.posts.RegisterPost
 import com.iwan.plasmahero_mobile.data.source.remote.responses.*
 import retrofit2.Call
@@ -30,6 +31,13 @@ object RemoteDataSource {
     fun createDonor(data: DonorPost): Call<DonorResponse> {
         val apiService = DataService.create()
         val call = apiService.createDonor(data)
+
+        return call
+    }
+
+    fun createRecipient(data: RecipientPost): Call<RecipientResponse> {
+        val apiService = DataService.create()
+        val call = apiService.createRecipient(data)
 
         return call
     }

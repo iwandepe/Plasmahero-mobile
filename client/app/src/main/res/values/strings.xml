@@ -22,11 +22,16 @@
     <string name="title_udd">UDD</string>
     <string name="title_event">Event</string>
     <string name="title_donor_form">Form donor</string>
+    <string name="title_recipient_form">Form pencari donor</string>
     <string name="text_is_registered">Belum memiliki akun?</string>
     <string name="text_role_fragment">Pilih peran yang kamu!</string>
     <string name="text_fill_donor_data_title">Isi data donor kamu!</string>
+    <string name="text_fill_recipinet_data_title">Isi data pasien!</string>
     <string name="form_age_label">Umur</string>
     <string name="form_address_label">Alamat</string>
+    <string name="form_hospital_name_label">Rumah Sakit</string>
+    <string name="form_hospital_city_label">Kota Rumah Sakit</string>
+    <string name="form_hospital_letter_label">Upload surat dari rumah sakit</string>
     <string name="form_city_label">Kota</string>
     <string name="form_phone_label">Nomor Telepon</string>
     <string name="form_gender_label">Jenis Kelamin</string>

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login_navigation"
-    app:startDestination="@+id/navigation_donor_form">
+    app:startDestination="@+id/navigation_recipient_form">
 
     <fragment
         android:id="@+id/navigation_login"
@@ -30,7 +30,13 @@
         android:name="com.iwan.plasmahero_mobile.ui.home.DonorFormFragment"
         android:label="@string/title_donor_form"
         tools:layout="@layout/fragment_donor_form">
+    </fragment>
 
+    <fragment
+        android:id="@+id/navigation_recipient_form"
+        android:name="com.iwan.plasmahero_mobile.ui.home.RecipientFormFragment"
+        android:label="@string/title_recipient_form"
+        tools:layout="@layout/fragment_recipient_form">
     </fragment>
 
 </navigation>
