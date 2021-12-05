@@ -48,6 +48,7 @@
     <string name="text_file_picked">Ubah file</string>
     <string name="text_donor_role">Pendonor</string>
     <string name="text_recipient_role">Pencari Donor</string>
+    <string name="button_logout">Logout</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

@@ -7,6 +7,7 @@ import com.iwan.plasmahero_mobile.data.source.remote.posts.LoginPost
 import com.iwan.plasmahero_mobile.data.source.remote.posts.RecipientPost
 import com.iwan.plasmahero_mobile.data.source.remote.posts.RegisterPost
 import com.iwan.plasmahero_mobile.data.source.remote.responses.*
+import com.iwan.plasmahero_mobile.utils.SessionManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,16 +29,16 @@ object RemoteDataSource {
         return call
     }
 
-    fun createDonor(data: DonorPost): Call<DonorResponse> {
+    fun createDonor(data: DonorPost, token: String): Call<DonorResponse> {
         val apiService = DataService.create()
-        val call = apiService.createDonor(data)
+        val call = apiService.createDonor(data, token)
 
         return call
     }
 
-    fun createRecipient(data: RecipientPost): Call<RecipientResponse> {
+    fun createRecipient(data: RecipientPost, token: String): Call<RecipientResponse> {
         val apiService = DataService.create()
-        val call = apiService.createRecipient(data)
+        val call = apiService.createRecipient(data, token)
 
         return call
     }

@@ -22,11 +22,14 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.iwan.plasmahero_mobile.HomeActivity
 import com.iwan.plasmahero_mobile.R
 import com.iwan.plasmahero_mobile.data.source.remote.RemoteDataSource
 import com.iwan.plasmahero_mobile.data.source.remote.posts.DonorPost
 import com.iwan.plasmahero_mobile.data.source.remote.responses.DonorResponse
 import com.iwan.plasmahero_mobile.utils.Helper
+import com.iwan.plasmahero_mobile.utils.SessionManager
+import com.iwan.plasmahero_mobile.utils.SessionManager.token
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -160,12 +163,22 @@ class DonorFormFragment : Fragment() {
             Log.v("POST", "Create donor")
             Log.v("VAR: donorPost", donorPost.toString())
 
-            val call = RemoteDataSource.createDonor(donorPost)
+            val prefs = SessionManager.getSharedPreferences(requireActivity())
+            val token = "Bearer " + prefs.token
+            val call = RemoteDataSource.createDonor(donorPost, token.toString())
             call.enqueue(object : Callback<DonorResponse> {
                 override fun onResponse(call: Call<DonorResponse>, response: Response<DonorResponse>) {
                     if (response.body()?.success == true) {
                         Log.v("Response", response.body().toString())
                         Toast.makeText(requireContext(), "Create donor data success", Toast.LENGTH_SHORT).show()
+
+                        activity?.setResult(Activity.RESULT_OK)
+
+                        //Complete and destroy login activity once successful
+                        activity?.finish()
+
+                        val intent = Intent(activity, HomeActivity::class.java)
+                        startActivity(intent)
                     } else {
                         Log.v("Response", response.body().toString())
                         Toast.makeText(requireContext(), "Create donor data failed", Toast.LENGTH_SHORT).show()

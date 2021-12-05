@@ -33,8 +33,9 @@ class RegisterViewModel() : ViewModel() {
         val call = RemoteDataSource.register(data)
         call.enqueue(object : Callback<RegisterResponse> {
             override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
+                Log.d("Response full", response.toString())
                 if (response.body()?.success == true) {
-                    Log.v("Response", response.body().toString())
+                    Log.v("Response success", response.body().toString())
                     val user = User(
                             id = response.body()?.data?.id,
                             name = response.body()?.data?.name,
@@ -49,7 +50,8 @@ class RegisterViewModel() : ViewModel() {
                     prefs.name = user.name
                     prefs.email = user.email
                 } else {
-                    _registerResult.value = RegisterResult(error = R.string.login_failed)
+                    Log.v("Response failed", response.body().toString())
+                    _registerResult.value = RegisterResult(error = R.string.register_failed)
                 }
             }
 

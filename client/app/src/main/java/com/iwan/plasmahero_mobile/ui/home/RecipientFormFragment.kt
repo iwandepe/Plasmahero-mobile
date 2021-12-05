@@ -19,12 +19,15 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import com.iwan.plasmahero_mobile.HomeActivity
 import com.iwan.plasmahero_mobile.R
 import com.iwan.plasmahero_mobile.data.source.remote.RemoteDataSource
 import com.iwan.plasmahero_mobile.data.source.remote.posts.RecipientPost
 import com.iwan.plasmahero_mobile.data.source.remote.responses.DonorResponse
 import com.iwan.plasmahero_mobile.data.source.remote.responses.RecipientResponse
 import com.iwan.plasmahero_mobile.utils.Helper
+import com.iwan.plasmahero_mobile.utils.SessionManager
+import com.iwan.plasmahero_mobile.utils.SessionManager.token
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -99,13 +102,23 @@ class RecipientFormFragment : Fragment() {
             Log.v("POST", "Create recipient")
             Log.v("VAR: recipientPost", recipientPost.toString())
 
-            val call = RemoteDataSource.createRecipient(recipientPost)
+            val prefs = SessionManager.getSharedPreferences(requireActivity())
+            val token = "Bearer " + prefs.token
+            val call = RemoteDataSource.createRecipient(recipientPost, token.toString())
             call.enqueue(object : Callback<RecipientResponse> {
                 override fun onResponse(call: Call<RecipientResponse>, response: Response<RecipientResponse>) {
                     Log.d("Response", response.toString())
                     if (response.body()?.success == true) {
                         Log.v("Response success", response.body().toString())
                         Toast.makeText(requireContext(), "Berhasil menyimpan data", Toast.LENGTH_SHORT).show()
+
+                        activity?.setResult(Activity.RESULT_OK)
+
+                        //Complete and destroy login activity once successful
+                        activity?.finish()
+
+                        val intent = Intent(activity, HomeActivity::class.java)
+                        startActivity(intent)
                     } else {
                         Log.v("Response failed", response.body().toString())
                         Toast.makeText(requireContext(), "Gagal menyimpan data", Toast.LENGTH_SHORT).show()

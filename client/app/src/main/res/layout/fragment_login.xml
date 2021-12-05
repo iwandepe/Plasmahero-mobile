@@ -26,6 +26,8 @@
         android:inputType="textEmailAddress"
         android:layout_marginTop="@dimen/large_margin"
         android:selectAllOnFocus="true"
+        android:background="@color/yellow_soft"
+        android:padding="@dimen/form_padding_large"
         android:layout_below="@id/ivLoginLogo"/>
 
     <EditText
@@ -38,6 +40,8 @@
         android:layout_marginTop="@dimen/default_margin"
         android:inputType="textPassword"
         android:selectAllOnFocus="true"
+        android:background="@color/yellow_soft"
+        android:padding="@dimen/form_padding_large"
         android:layout_below="@id/etLoginUsername"/>
 
     <Button
@@ -46,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_margin"
         android:text="@string/action_sign_in"
-        android:enabled="false"
+        android:enabled="true"
         android:background="@color/design_default_color_on_primary"
         android:layout_below="@id/etLoginPassword"/>
 
@@ -72,7 +76,8 @@
             android:layout_height="wrap_content"
             android:text="@string/action_register"
             android:textColor="@color/black"
-            android:background="@color/material_on_background_disabled"/>
+            android:backgroundTint="@color/white"
+            android:padding="@dimen/no_padding"/>
 
     </LinearLayout>
 

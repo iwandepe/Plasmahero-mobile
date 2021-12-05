@@ -26,6 +26,8 @@
         android:layout_marginTop="@dimen/large_margin"
         android:inputType="text"
         android:hint="@string/prompt_name"
+        android:background="@color/yellow_soft"
+        android:padding="@dimen/form_padding_large"
         android:layout_below="@id/ivLoginLogo"/>
 
     <EditText
@@ -36,6 +38,8 @@
         android:inputType="textEmailAddress"
         android:layout_marginTop="@dimen/small_margin"
         android:selectAllOnFocus="true"
+        android:background="@color/yellow_soft"
+        android:padding="@dimen/form_padding_large"
         android:layout_below="@id/etRegsiterName"/>
 
     <EditText
@@ -48,6 +52,8 @@
         android:imeOptions="actionDone"
         android:inputType="textPassword"
         android:selectAllOnFocus="true"
+        android:background="@color/yellow_soft"
+        android:padding="@dimen/form_padding_large"
         android:layout_below="@id/etRegisterUsername"/>
 
     <EditText
@@ -60,6 +66,8 @@
         android:imeOptions="actionDone"
         android:inputType="textPassword"
         android:selectAllOnFocus="true"
+        android:background="@color/yellow_soft"
+        android:padding="@dimen/form_padding_large"
         android:layout_below="@id/etRegisterPassword"/>
 
     <Button

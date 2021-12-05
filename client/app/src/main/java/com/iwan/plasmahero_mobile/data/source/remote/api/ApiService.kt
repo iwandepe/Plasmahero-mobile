@@ -37,12 +37,14 @@ interface ApiService {
 
     @POST("donors")
     fun createDonor(
-            @Body data: DonorPost
+        @Body data: DonorPost,
+        @Header("Authorization") token: String
     ): Call<DonorResponse>
 
     @POST("recipients")
     fun createRecipient(
-        @Body data: RecipientPost
+        @Body data: RecipientPost,
+        @Header("Authorization") token: String
     ): Call<RecipientResponse>
 
     @GET("event")
@@ -52,6 +54,7 @@ interface ApiService {
     fun getFaqs() : Call<List<FaqResponse>>
 }
 
+/*
 var client = OkHttpClient.Builder().addInterceptor(object : Interceptor {
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): okhttp3.Response {
@@ -61,11 +64,11 @@ var client = OkHttpClient.Builder().addInterceptor(object : Interceptor {
         return chain.proceed(newRequest)
     }
 }).build()
+*/
 
 object DataService {
     fun create(): ApiService {
         val retrofit = Retrofit.Builder()
-                .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)
                 .build()

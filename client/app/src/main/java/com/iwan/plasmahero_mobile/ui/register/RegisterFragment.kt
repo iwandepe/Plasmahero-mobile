@@ -18,6 +18,7 @@ import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.iwan.plasmahero_mobile.HomeActivity
 import com.iwan.plasmahero_mobile.R
 import com.iwan.plasmahero_mobile.data.entities.User
@@ -74,13 +75,8 @@ class RegisterFragment : Fragment() {
                     loginResult.success?.let {
                         updateUiWithUser(it)
 
-                        activity?.setResult(Activity.RESULT_OK)
-
-                        //Complete and destroy login activity once successful
-                        activity?.finish()
-
-                        val intent = Intent(activity, HomeActivity::class.java)
-                        startActivity(intent)
+                        val navController = findNavController()
+                        navController.navigate(R.id.action_navigation_register_to_navigation_role_option)
                     }
                 })
 
