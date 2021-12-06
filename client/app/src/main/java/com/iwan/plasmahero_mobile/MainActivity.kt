@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
         val prefs = SessionManager.getSharedPreferences(this)
 
-        if (!prefs.contains("token")) {
+        if (prefs.contains("token")) {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         } else {

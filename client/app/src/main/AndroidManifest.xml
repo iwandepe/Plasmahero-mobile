@@ -15,7 +15,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_home"></activity>
+            android:label="@string/title_activity_home"/>
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />

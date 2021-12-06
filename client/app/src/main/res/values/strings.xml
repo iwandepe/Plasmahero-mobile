@@ -49,6 +49,16 @@
     <string name="text_donor_role">Pendonor</string>
     <string name="text_recipient_role">Pencari Donor</string>
     <string name="button_logout">Logout</string>
+    <string name="dummy_profile_name">Bob Marley</string>
+    <string name="dummy_profile_role">Pendonor</string>
+    <string name="text_donor_total">Total donor</string>
+    <string name="text_last_donor">Donor terakhir</string>
+    <string name="text_donor_back">Donor kembali</string>
+    <string name="dummy_donor_total">0 kali</string>
+    <string name="dummy_none">-</string>
+    <string name="text_upload_donor_evidence">Upload bukti donor</string>
+    <string name="text_history">Riwayat Donor</string>
+    <string name="text_about_plasma">Tentang Plasma</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
