@@ -14,14 +14,11 @@ import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 import java.io.IOException
 
 
-private const val BASE_URL = "http://192.168.0.102:8000/api/"
+const val BASE_URL = "http://192.168.0.102:8000/api/"
 //private const val BASE_URL = "https://cahindo.xyz/lara/"
 
 interface ApiService {
@@ -52,6 +49,12 @@ interface ApiService {
 
     @GET("faq")
     fun getFaqs() : Call<List<FaqResponse>>
+
+    @GET
+    fun getProfileById(
+            @Url url: String,
+            @Header("Authorization") token: String
+    ) : Call<ProfileResponse>
 }
 
 /*

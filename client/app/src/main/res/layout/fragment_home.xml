@@ -56,14 +56,13 @@
             android:layout_below="@+id/llProfileName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="3">
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_weight="1">
+                android:layout_weight="0.7">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -71,6 +70,7 @@
                     android:text="@string/text_donor_total"/>
 
                 <TextView
+                    android:id="@+id/tvProfileDonorTotal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/dummy_donor_total"
@@ -90,6 +90,7 @@
                     android:text="@string/text_last_donor"/>
 
                 <TextView
+                    android:id="@+id/tvProfileDonorLast"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/dummy_none"
@@ -109,6 +110,7 @@
                     android:text="@string/text_donor_back"/>
 
                 <TextView
+                    android:id="@+id/tvProfileDonorAgain"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/dummy_none"

@@ -1,0 +1,50 @@
+JvmtiExport can_access_local_variables 0
+JvmtiExport can_hotswap_or_post_breakpoint 0
+JvmtiExport can_post_on_exceptions 0
+# 238 ciObject found
+ciMethod java/lang/Object <init> ()V 4097 1 3862449 0 0
+ciMethod java/lang/Object hashCode ()I 2049 1 256 0 -1
+ciMethod java/lang/Object equals (Ljava/lang/Object;)Z 3433 1 81334 0 -1
+ciMethod java/lang/Object notifyAll ()V 3073 1 384 0 -1
+ciMethod java/lang/Class isAssignableFrom (Ljava/lang/Class;)Z 2049 1 256 0 -1
+ciMethod java/lang/Class getName ()Ljava/lang/String; 2113 1 98791 0 96
+ciMethod java/lang/Class getName0 ()Ljava/lang/String; 2065 1 258 0 -1
+ciMethod java/lang/Class getSuperclass ()Ljava/lang/Class; 2049 1 256 0 -1
+ciMethod java/lang/System identityHashCode (Ljava/lang/Object;)I 2049 1 256 0 -1
+ciMethod java/lang/ref/Reference get ()Ljava/lang/Object; 1041 1 130 0 -1
+ciMethod java/lang/ref/Reference <init> (Ljava/lang/Object;)V 2449 1 54160 0 0
+ciMethod java/lang/ref/Reference <init> (Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V 2049 1 52418 0 96
+ciMethod java/lang/ref/SoftReference <init> (Ljava/lang/Object;)V 2049 1 12952 0 128
+ciMethod java/lang/ref/SoftReference get ()Ljava/lang/Object; 2049 1 49468 0 96
+ciMethod java/lang/ref/WeakReference <init> (Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V 2049 1 32671 0 96
+ciMethod java/lang/ref/ReferenceQueue reallyPoll ()Ljava/lang/ref/Reference; 9 1 5905 0 256
+ciMethod java/lang/ref/ReferenceQueue poll ()Ljava/lang/ref/Reference; 2097 1 43674 0 768
+ciMethod java/lang/Thread currentThread ()Ljava/lang/Thread; 2049 1 256 0 -1
+ciMethod sun/misc/Unsafe getObjectVolatile (Ljava/lang/Object;J)Ljava/lang/Object; 2049 1 256 0 -1
+ciMethod java/lang/Long valueOf (J)Ljava/lang/Long; 2545 1 9182 0 192
+ciMethod java/lang/Long <init> (J)V 2049 1 6090 0 -1
+ciMethod java/io/ObjectStreamField getField ()Ljava/lang/reflect/Field; 1417 1 177 0 0
+ciMethod java/security/AccessController doPrivileged (Ljava/security/PrivilegedAction;)Ljava/lang/Object; 2049 1 256 0 -1
+ciMethod sun/misc/VM addFinalRefCount (I)V 3409 1 13032 0 0
+ciMethod java/util/Objects requireNonNull (Ljava/lang/Object;)Ljava/lang/Object; 2145 1 430956 0 64
+ciMethodData java/lang/Object <init> ()V 2 3862458 orig 264 88 29 130 117 0 0 0 0 128 4 247 22 0 0 0 0 32 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 32 101 120 116 114 97 32 100 97 116 97 32 108 111 99 107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 209 109 215 1 1 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 3 0 1 0 0 0 0 0 0 0 255 255 255 255 0 0 0 0 0 0 0 0 data 0 oops 0
+ciMethod java/util/concurrent/ConcurrentMap putIfAbsent (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; 0 0 1 0 -1
+ciMethod java/util/concurrent/ConcurrentMap remove (Ljava/lang/Object;Ljava/lang/Object;)Z 0 0 1 0 -1
+ciMethod java/util/concurrent/ConcurrentMap remove (Ljava/lang/Object;)Ljava/lang/Object; 0 0 1 0 -1
+ciMethod java/util/concurrent/ConcurrentMap get (Ljava/lang/Object;)Ljava/lang/Object; 0 0 1 0 -1
+ciMethod java/util/concurrent/ConcurrentMap put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; 0 0 1 0 -1
+ciMethod java/util/concurrent/ConcurrentMap containsKey (Ljava/lang/Object;)Z 0 0 1 0 -1
+ciMethod java/util/concurrent/ConcurrentHashMap spread (I)I 3113 1 69727 0 0
+ciMethod java/util/concurrent/ConcurrentHashMap tabAt ([Ljava/util/concurrent/ConcurrentHashMap$Node;I)Ljava/util/concurrent/ConcurrentHashMap$Node; 3241 1 116106 0 64
+ciMethod java/util/concurrent/ConcurrentHashMap casTabAt ([Ljava/util/concurrent/ConcurrentHashMap$Node;ILjava/util/concurrent/ConcurrentHashMap$Node;Ljava/util/concurrent/ConcurrentHashMap$Node;)Z 1801 1 29120 0 -1
+ciMethod java/util/concurrent/ConcurrentHashMap get (Ljava/lang/Object;)Ljava/lang/Object; 2097 225 5394 0 640
+ciMethod java/util/concurrent/ConcurrentHashMap put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; 2073 1 5663 0 64
+ciMethod java/util/concurrent/ConcurrentHashMap putVal (Ljava/lang/Object;Ljava/lang/Object;Z)Ljava/lang/Object; 2113 313 44322 0 -1
+ciMethod java/util/concurrent/ConcurrentHashMap putIfAbsent (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; 2449 1 24033 0 64
+ciMethod java/util/concurrent/ConcurrentHashMap initTable ()[Ljava/util/concurrent/ConcurrentHashMap$Node; 57 1 1123 0 -1
+ciMethod java/util/concurrent/ConcurrentHashMap addCount (JI)V 1609 57 22757 0 -1
+ciMethod java/util/concurrent/ConcurrentHashMap helpTransfer ([Ljava/util/concurrent/ConcurrentHashMap$Node;Ljava/util/concurrent/ConcurrentHashMap$Node;)[Ljava/util/concurrent/ConcurrentHashMap$Node; 0 0 1 0 -1
+ciMethod java/util/concurrent/ConcurrentHashMap treeifyBin ([Ljava/util/concurrent/ConcurrentHashMap$Node;I)V 1 1 1 0 -1
+ciMethod java/util/concurrent/ConcurrentHashMap$Node <init> (ILjava/lang/Object;Ljava/lang/Object;Ljava/util/concurrent/ConcurrentHashMap$Node;)V 1841 1 40699 0 -1
+ciMethod java/util/concurrent/ConcurrentHashMap$Node find (ILjava/lang/Object;)Ljava/util/concurrent/ConcurrentHashMap$Node; 0 0 1 0 -1
+ciMethodData java/util/concurrent/ConcurrentHashMap tabAt ([Ljava/util/concurrent/ConcurrentHashMap$Node;I)Ljava/util/concurrent/ConcurrentHashMap$Node; 2 116106 orig 264 88 29 130 117 0 0 0 0 128 2 17 23 0 0 0 0 176 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 32 101 120 116 114 97 32 100 97 116 97 32 108 111 99 107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 149 1 0 0 169 31 14 0 1 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 3 0 2 0 0 0 96 0 0 0 255 255 255 255 5 0 14 0 0 0 0 0 data 12 0xe0005 0x0 0x0 0x0 0x0 0x0 0x110104 0x0 0x1fa314c0 0x1392e 0x1acf1e60 0xfbf oops 2

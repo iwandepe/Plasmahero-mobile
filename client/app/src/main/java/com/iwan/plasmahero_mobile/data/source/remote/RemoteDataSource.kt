@@ -1,6 +1,7 @@
 package com.iwan.plasmahero_mobile.data.source.remote
 
 import android.util.Log
+import com.iwan.plasmahero_mobile.data.source.remote.api.BASE_URL
 import com.iwan.plasmahero_mobile.data.source.remote.api.DataService
 import com.iwan.plasmahero_mobile.data.source.remote.posts.DonorPost
 import com.iwan.plasmahero_mobile.data.source.remote.posts.LoginPost
@@ -32,6 +33,14 @@ object RemoteDataSource {
     fun createDonor(data: DonorPost, token: String): Call<DonorResponse> {
         val apiService = DataService.create()
         val call = apiService.createDonor(data, token)
+
+        return call
+    }
+
+    fun getProfileById(id: Int, token: String): Call<ProfileResponse> {
+        val apiService = DataService.create()
+        val url = BASE_URL + "profile/" + id.toString()
+        val call = apiService.getProfileById(url, token)
 
         return call
     }
