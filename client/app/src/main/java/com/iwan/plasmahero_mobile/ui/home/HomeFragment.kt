@@ -67,6 +67,11 @@ class HomeFragment : Fragment() {
             navController.navigate(R.id.action_navigation_home_to_navigation_about_plasma)
         }
 
+        mcvHomeDonorHistory.setOnClickListener {
+            val navController = findNavController()
+            navController.navigate(R.id.action_navigation_home_to_navigation_donor_history)
+        }
+
         val prefs = SessionManager.getSharedPreferences(requireActivity())
         val token = "Bearer " + prefs.token
         val userId = prefs.userId

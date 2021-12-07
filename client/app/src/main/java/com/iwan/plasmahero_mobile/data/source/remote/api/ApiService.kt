@@ -55,6 +55,12 @@ interface ApiService {
             @Url url: String,
             @Header("Authorization") token: String
     ) : Call<ProfileResponse>
+
+    @GET
+    fun getDonorHistoryById(
+        @Url url: String,
+        @Header("Authorization") token: String
+    ) : Call<DonorHistoryResponse>
 }
 
 /*

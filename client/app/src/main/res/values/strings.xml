@@ -29,6 +29,7 @@
     <string name="text_role_fragment">Pilih peran yang kamu!</string>
     <string name="text_fill_donor_data_title">Isi data donor kamu!</string>
     <string name="text_fill_recipinet_data_title">Isi data pasien!</string>
+    <string name="title_donor_history_fragment">Riwayat donor kamu</string>
     <string name="form_age_label">Umur</string>
     <string name="form_address_label">Alamat</string>
     <string name="form_hospital_name_label">Rumah Sakit</string>

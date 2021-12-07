@@ -45,6 +45,14 @@ object RemoteDataSource {
         return call
     }
 
+    fun getDonorHistoryById(id: Int, token: String): Call<DonorHistoryResponse> {
+        val apiService = DataService.create()
+        val url = BASE_URL + "donors/" + id.toString() + "/histories"
+        val call = apiService.getDonorHistoryById(url, token)
+
+        return call
+    }
+
     fun createRecipient(data: RecipientPost, token: String): Call<RecipientResponse> {
         val apiService = DataService.create()
         val call = apiService.createRecipient(data, token)

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_about_plasma"
             app:destination="@id/navigation_about_plasma" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_donor_history"
+            app:destination="@id/navigation_donor_history" />
     </fragment>
 
     <fragment
@@ -49,5 +52,10 @@
         android:name="com.iwan.plasmahero_mobile.ui.home.AboutPlasmaFragment"
         android:label="fragment_about_plasma"
         tools:layout="@layout/fragment_about_plasma" />
+    <fragment
+        android:id="@+id/navigation_donor_history"
+        android:name="com.iwan.plasmahero_mobile.ui.home.DonorHistoryFragment"
+        android:label="fragment_donor_history"
+        tools:layout="@layout/fragment_donor_history" />
 
 </navigation>
