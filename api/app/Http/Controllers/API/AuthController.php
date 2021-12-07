@@ -19,6 +19,7 @@ class AuthController extends BaseController
         $data['token'] =  $user->createToken('auth_token')->plainTextToken;
         $data['id'] = $user->id;
         $data['name'] =  $user->name;
+        $data['email'] = $user->email;
       }
 
       return $this->handleResponse($data, 'User logged in!');
@@ -45,6 +46,8 @@ class AuthController extends BaseController
     $user = User::create($input);
     $data['token'] =  $user->createToken('auth_token')->plainTextToken;
     $data['name'] =  $user->name;
+    $data['id'] = $user->id;
+    $data['email'] = $user->email;
 
     return $this->handleResponse($data, 'User successfully registered!');
   }
