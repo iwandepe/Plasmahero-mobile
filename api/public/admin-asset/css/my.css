@@ -1,0 +1,28 @@
+.border-style-none {
+  border-style: none;
+}
+
+.event i{
+  color: #b04021;
+}
+
+.form-group .error {
+    color: red;
+}
+
+#page-id {
+    display: none;
+}
+
+td {
+  white-space: normal !important; 
+  word-wrap: break-word;  
+}
+table {
+  table-layout: fixed;
+}
+
+.content-center {
+  display: block;
+  margin: auto;"
+}

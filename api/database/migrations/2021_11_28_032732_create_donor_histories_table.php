@@ -16,14 +16,14 @@ class CreateDonorHistoriesTable extends Migration
     {
         Schema::create('donor_histories', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('donor_id');
+            $table->unsignedBigInteger('user_id');
 
             $table->string('udd')->nullable();
             $table->string('donor_date')->default(DB::raw('CURRENT_TIMESTAMP'))->nullable();
             $table->string('donor_evidence_path')->nullable();
             $table->boolean('is_valid')->default(false)->nullable();
 
-            $table->foreign('donor_id')->references('id')->on('donors');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

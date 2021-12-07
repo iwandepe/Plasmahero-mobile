@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\API\BaseController;
 use App\Models\Donor;
+use App\Models\User;
 use Exception;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
@@ -41,6 +42,8 @@ class DonorController extends BaseController
             $pImage->stream();
             $pPath = '/donors/negative/' . time() . ".png";
             Storage::disk('local')->put('public/' . $pPath, $pImage, 'public');
+
+            User::where('id', $request->user_id)->update(['type' => 'donor']);
 
             $donor = Donor::create([
                 'user_id' => $request->user_id,

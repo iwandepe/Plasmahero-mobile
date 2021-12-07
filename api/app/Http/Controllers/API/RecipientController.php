@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Models\Recipient;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -33,6 +34,8 @@ class RecipientController extends BaseController
             $image->stream();
             $path = '/donors/positive/' . time() . ".png";
             Storage::disk('local')->put('public/' . $path, $image, 'public');
+
+            User::where('id', $request->user_id)->update(['type' => 'recipient']);
 
             $recipient = Recipient::create([
                 'user_id' => $request->user_id,

@@ -24,6 +24,7 @@ class CreateRecipientsTable extends Migration
             $table->string('blood_rhesus')->nullable();
 
             $table->string('hospital_letter_path')->nullable();
+            $table->string('generated_poster_path')->nullable();
 
             $table->boolean('is_valid')->default(false)->nullable();
 

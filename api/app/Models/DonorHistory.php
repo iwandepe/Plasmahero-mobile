@@ -10,7 +10,7 @@ class DonorHistory extends Model
     use HasFactory;
 
     protected $fillable = [
-        'donor_id',
+        'user_id',
         'udd',
         'donor_date',
         'donor_evidence_path',

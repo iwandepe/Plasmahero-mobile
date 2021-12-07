@@ -5,14 +5,12 @@ use App\Http\Controllers\API\DonorController;
 use App\Http\Controllers\API\DonorHistoryController;
 use App\Http\Controllers\API\RecipientController;
 use App\Http\Controllers\API\UserController;
-use App\Models\Recipient;
 use Illuminate\Support\Facades\Route;
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
 
 Route::middleware('auth:sanctum')->group(function () {
-  // Route::resource('donors', DonorController::class);
   Route::get('donors', [DonorController::class, 'getAllDonors']);
   Route::post('donors', [DonorController::class, 'storeDonor']);
 
@@ -23,6 +21,6 @@ Route::middleware('auth:sanctum')->group(function () {
   Route::get('profile/{id}', [UserController::class, 'getProfileById']);
 
   Route::get('donors/histories', [DonorHistoryController::class, 'getAllDonorHistories']);
-  Route::get('donors/{donorId}/histories', [DonorHistoryController::class, 'getHistoriesByDonorId']);
-  Route::post('donors/histories', [DonorHistoryController::class, 'storeDonorHistory']);
+  Route::get('donors/{userId}/histories', [DonorHistoryController::class, 'getHistoriesByUserId']);
+  Route::post('donors/evidence', [DonorHistoryController::class, 'storeDonorEvidence']);
 });

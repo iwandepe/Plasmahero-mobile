@@ -17,14 +17,14 @@ class DonorHistoryController extends BaseController
         return $this->handleResponse($donorHistory);
     }
 
-    public function getHistoriesByDonorId($donorId)
+    public function getHistoriesByUserId($userId)
     {
-        $donorHistory = DonorHistory::where('donor_id', $donorId)->get();
+        $donorHistory = DonorHistory::where('user_id', $userId)->get();
 
         return $this->handleResponse($donorHistory);
     }
 
-    public function storeDonorHistory(Request $request)
+    public function storeDonorEvidence(Request $request)
     {
         try {
             $image = Image::make(file_get_contents($request->donor_evidence));
@@ -35,7 +35,7 @@ class DonorHistoryController extends BaseController
             Storage::disk('local')->put('public/' . $path, $image, 'public');
 
             $donorHistory = DonorHistory::create([
-                'donor_id' => $request->donor_id,
+                'user_id' => $request->user_id,
                 'udd' => $request->udd,
                 'donor_evidence_path' => '/storage' . $path,
             ]);
