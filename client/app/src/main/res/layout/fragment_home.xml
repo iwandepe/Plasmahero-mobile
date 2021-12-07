@@ -137,6 +137,7 @@
         android:orientation="horizontal">
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcvHomeDonorHistory"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/small_margin"
@@ -165,6 +166,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcvHomeAboutPlasma"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

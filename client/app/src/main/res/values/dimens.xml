@@ -8,7 +8,9 @@
     <dimen name="fragment_horizontal_margin">16dp</dimen>
     <dimen name="fragment_vertical_margin">16dp</dimen>
     <dimen name="fragment_title">42dp</dimen>
+    <dimen name="fragment_title_small">32dp</dimen>
     <dimen name="large_margin">32dp</dimen>
+    <dimen name="small_icon_size">24dp</dimen>
     <dimen name="default_margin">16dp</dimen>
     <dimen name="small_margin">8dp</dimen>
     <dimen name="xsmall_margin">4dp</dimen>
@@ -24,4 +26,5 @@
     <dimen name="no_padding">0dp</dimen>
     <dimen name="profile_icon_size">80dp</dimen>
     <dimen name="profile_card_height">240dp</dimen>
+    <dimen name="text_size_small">12dp</dimen>
 </resources>

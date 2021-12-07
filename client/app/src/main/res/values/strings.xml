@@ -59,6 +59,13 @@
     <string name="text_upload_donor_evidence">Upload bukti donor</string>
     <string name="text_history">Riwayat Donor</string>
     <string name="text_about_plasma">Tentang Plasma</string>
+    <string name="title_about_plasma">Tentang Plasma Konvalesen</string>
+    <string name="about_plasma_subtitle">Merupakan salah satu metode imunisasi pasif, yang dilakukan dengan memberikan plasma orang yang telah sembuh dari COVID-19, kepada pasien COVID-19 yang sedang dirawat. Terapi Plasma Konvalesen merupakan terapi tambahan yang masih dalam proses penelitian di Indonesia.</string>
+    <string name="text_donor_condition">Syarat Donor</string>
+    <string name="text_donor_plot">Alur Donor</string>
+    <string name="text_get_donor_plot">Alur Dapat Plasma (Stok Tersedia)</string>
+    <string name="text_get_donor_plot_no_available">Alur Dapat Plasma (Stok Kosong)</string>
+    <string name="text_dummy">Dummy text</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

@@ -16,4 +16,46 @@
         <item>+</item>
         <item>-</item>
     </string-array>
+
+    <string-array name="donor_condition">
+        <item>Usia 18-60 tahun</item>
+        <item>Berat badan ≥ 55kg</item>
+        <item>Diutamakan pria, apabila perempuan belum pernah hamil</item>
+        <item>Pernah terkonfirmasi COVID-19 yg ditunjukkan dengan bukti PCR Swab Positif</item>
+        <item>Bebas keluhan minimal 14 hari sejak dinyatakan swab negatif atau Surat Selesai Isolasi Mandiri dari instansi kesehatan</item>
+        <item>Tidak menerima transfusi darah selama 6 bulan terakhir</item>
+        <item>Lebih diutamakan yang pernah mendonorkan darah</item>
+    </string-array>
+    
+    <string-array name="donor_plot">
+        <item>Calon pendonor yang memenuhi kriteria</item>
+        <item>Telepon PMI/UTD yang Melayani Donor Plasma Konvalesen untuk Info dan Syarat Donor</item>
+        <item>Datang ke PMI/UTD syarat donor dengan/tanpa membawa surat permintaan dari RS</item>
+        <item>Isi dokumen dan Surat Persetujuan</item>
+        <item>Cek tekanan darah, Cek Hemoglobin dan Skrining Darah</item>
+        <item>Jika lolos: Donor plasma konvalesen dengan proses kurang lebih 1-1,5 jam</item>
+        <item>Selesai</item>
+        <item>Rutin Donor Tiap 2 Minggu sekali</item>
+    </string-array>
+
+    <string-array name="get_donor_plot">
+        <item>Pasien COVID 19 di RS membutuhkan Terapi Plasma Konvalesen (PK)</item>
+        <item>Dokter yang merawat membuat blanko permintaan PK ke PMI/Unit Transfusi Darah (UTD) di RS yang melayani donor PK</item>
+        <item>Apabila Stok tersedia di PMI / UTD RS</item>
+        <item>Disiapkan PK yang sesuai blanko permintaan dan contoh darah pasien</item>
+        <item>PK dapat diambil petugas RS/keluarga pasien mengambil PK ke PMI/UTD RS sesuai blanko permintaan (dibawa dengan coolbox dan icepack)</item>
+        <item>PK diterima RS lalu ditransfusikan kepada pasien</item>
+    </string-array>
+
+    <string-array name="get_donor_plot_no_available">
+        <item>Pasien COVID 19 di RS membutuhkan Terapi Plasma Konvalesen (PK)</item>
+        <item>Dokter yang merawat membuat blanko permintaan PK ke PMI/Unit Transfusi Darah (UTD) di RS yang melayani donor PK</item>
+        <item>Apabila Stok Tidak tersedia di PMI / UTD RS</item>
+        <item>Keluarga mencari calon pendonor plasma sendiri</item>
+        <item>Menghubungin hotline TPK: PMI, Plasmahero.id, Blood4Life, dll</item>
+        <item>Jika dapat pendonor: edukasi dan skrining donor ke PMI/UTD RS yang melayani PK</item>
+        <item>Jika lolos skrining: akan dijadwalkan donor plasma</item>
+        <item>PK dapat diambil petugas RS/keluarga pasien sesuai blanko dan lolos uji silang (dibawa dengan coolbox dan icepack)</item>
+        <item>PK diterima RS lalu ditransfusikan kepada pasien</item>
+    </string-array>
 </resources>

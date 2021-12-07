@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.card.MaterialCardView
 import com.iwan.plasmahero_mobile.LoginActivity
 import com.iwan.plasmahero_mobile.R
@@ -41,6 +42,13 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val btnLogout = view.findViewById<Button>(R.id.btnLogout)
+        val mcvHomeDonorHistory = view.findViewById<MaterialCardView>(R.id.mcvHomeDonorHistory)
+        val mcvHomeAboutPlasma = view.findViewById<MaterialCardView>(R.id.mcvHomeAboutPlasma)
+
+        mcvHomeAboutPlasma.setOnClickListener{
+            val navController = findNavController()
+            navController.navigate(R.id.action_navigation_home_to_navigation_about_plasma)
+        }
 
         btnLogout.setOnClickListener {
             val prefs = SessionManager.getSharedPreferences(requireActivity())
