@@ -4,85 +4,154 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.AboutPlasmaFragment"
-    android:padding="@dimen/fragment_margin"
-    android:orientation="vertical">
+    tools:context=".ui.home.AboutPlasmaFragment">
 
-    <TextView
-        android:id="@+id/tvAboutPlasmaTitle"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/title_about_plasma"
-        android:textSize="@dimen/fragment_title_small"
-        android:textAlignment="center"
-        android:textStyle="bold"/>
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tvAboutPlasmaSubtitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin"
-        android:text="@string/about_plasma_subtitle"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/fragment_margin"
+            android:layout_marginBottom="@dimen/large_margin"
+            android:orientation="vertical">
 
-    <com.skydoves.expandablelayout.ExpandableLayout
-        android:id="@+id/expandableDonorPlot"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        app:expandable_duration="300"
-        app:expandable_isExpanded="false"
-        app:expandable_parentLayout="@layout/fragment_about_plasma_expandable_parent"
-        app:expandable_secondLayout="@layout/fragment_about_plasma_expandable_second"
-        app:expandable_spinner="@drawable/ic_arrow_down"
-        app:expandable_spinner_animate="true"
-        app:expandable_spinner_margin="14dp"
-        app:expandable_spinner_gravity="end"
-        app:expandable_spinner_color="@color/black"/>
+            <TextView
+                android:id="@+id/tvAboutPlasmaTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/title_about_plasma"
+                android:textSize="@dimen/fragment_title_small"
+                android:textAlignment="center"
+                android:textStyle="bold"/>
 
-    <com.skydoves.expandablelayout.ExpandableLayout
-        android:id="@+id/expandableDonorCondition"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        app:expandable_duration="300"
-        app:expandable_isExpanded="false"
-        app:expandable_parentLayout="@layout/fragment_about_plasma_expandable_parent"
-        app:expandable_secondLayout="@layout/fragment_about_plasma_expandable_second"
-        app:expandable_spinner="@drawable/ic_arrow_down"
-        app:expandable_spinner_animate="true"
-        app:expandable_spinner_margin="14dp"
-        app:expandable_spinner_gravity="end"
-        app:expandable_spinner_color="@color/black"/>
+            <TextView
+                android:id="@+id/tvAboutPlasmaSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin"
+                android:text="@string/about_plasma_subtitle"/>
 
-    <com.skydoves.expandablelayout.ExpandableLayout
-        android:id="@+id/expandableGetDonorPlot"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        app:expandable_duration="300"
-        app:expandable_isExpanded="false"
-        app:expandable_parentLayout="@layout/fragment_about_plasma_expandable_parent"
-        app:expandable_secondLayout="@layout/fragment_about_plasma_expandable_second"
-        app:expandable_spinner="@drawable/ic_arrow_down"
-        app:expandable_spinner_animate="true"
-        app:expandable_spinner_margin="14dp"
-        app:expandable_spinner_gravity="end"
-        app:expandable_spinner_color="@color/black"/>
+            <LinearLayout
+                android:id="@+id/expandableDonorCondition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
 
-    <com.skydoves.expandablelayout.ExpandableLayout
-        android:id="@+id/expandableGetDonorPlotNoAvailable"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        app:expandable_duration="300"
-        app:expandable_isExpanded="false"
-        app:expandable_parentLayout="@layout/fragment_about_plasma_expandable_parent"
-        app:expandable_secondLayout="@layout/fragment_about_plasma_expandable_second"
-        app:expandable_spinner="@drawable/ic_arrow_down"
-        app:expandable_spinner_animate="true"
-        app:expandable_spinner_margin="14dp"
-        app:expandable_spinner_gravity="end"
-        app:expandable_spinner_color="@color/black"/>
+                <TextView
+                    android:id="@+id/tvAboutPlasmaExpandableParent1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_dummy"
+                    android:textSize="@dimen/text_form_label"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvAboutPlasmaExpandableSecond1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.iwan.plasmahero_mobile.utils.WrapContentListView
+                    android:id="@+id/lvAboutPlasmaExpandableItem1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@android:color/transparent"
+                    android:dividerHeight="@dimen/small_margin"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/expandableDonorPlot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvAboutPlasmaExpandableParent2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_dummy"
+                    android:textSize="@dimen/text_form_label"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvAboutPlasmaExpandableSecond2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.iwan.plasmahero_mobile.utils.WrapContentListView
+                    android:id="@+id/lvAboutPlasmaExpandableItem2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@android:color/transparent"
+                    android:dividerHeight="@dimen/small_margin"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/expandableGetDonorPlot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvAboutPlasmaExpandableParent3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_dummy"
+                    android:textSize="@dimen/text_form_label"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvAboutPlasmaExpandableSecond3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.iwan.plasmahero_mobile.utils.WrapContentListView
+                    android:id="@+id/lvAboutPlasmaExpandableItem3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@android:color/transparent"
+                    android:dividerHeight="@dimen/small_margin"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/expandableGetDonorPlotNoAvailable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvAboutPlasmaExpandableParent4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_dummy"
+                    android:textSize="@dimen/text_form_label"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvAboutPlasmaExpandableSecond4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.iwan.plasmahero_mobile.utils.WrapContentListView
+                    android:id="@+id/lvAboutPlasmaExpandableItem4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@android:color/transparent"
+                    android:dividerHeight="@dimen/small_margin"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 
 </LinearLayout>

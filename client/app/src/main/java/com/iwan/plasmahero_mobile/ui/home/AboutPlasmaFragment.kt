@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import android.widget.ListView
 import android.widget.TextView
 import com.iwan.plasmahero_mobile.R
@@ -26,84 +27,35 @@ class AboutPlasmaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val expDonorCondition = view.findViewById<ExpandableLayout>(R.id.expandableDonorCondition)
-        val expDonorPlot = view.findViewById<ExpandableLayout>(R.id.expandableDonorPlot)
-        val expGetDonorPlot = view.findViewById<ExpandableLayout>(R.id.expandableGetDonorPlot)
-        val expGetDonorPlotNoAvailable = view.findViewById<ExpandableLayout>(R.id.expandableGetDonorPlotNoAvailable)
+        val expDonorCondition = view.findViewById<LinearLayout>(R.id.expandableDonorCondition)
+        val expDonorPlot = view.findViewById<LinearLayout>(R.id.expandableDonorPlot)
+        val expGetDonorPlot = view.findViewById<LinearLayout>(R.id.expandableGetDonorPlot)
+        val expGetDonorPlotNoAvailable = view.findViewById<LinearLayout>(R.id.expandableGetDonorPlotNoAvailable)
 
         val res: Resources = resources
         val donorConditionList = res.getStringArray(R.array.donor_condition)
         val donorConditionAdapter = ItemAdapter(requireActivity(), donorConditionList)
-        val lvDonorCondition = expDonorCondition.secondLayout.findViewById<ListView>(R.id.lvAboutPlasmaExpandableItem)
+        val lvDonorCondition = view.findViewById<ListView>(R.id.lvAboutPlasmaExpandableItem1)
         lvDonorCondition.adapter = donorConditionAdapter
-        expDonorCondition.parentLayout.findViewById<TextView>(R.id.tvAboutPlasmaExpandableParent).text = getString(R.string.text_donor_condition)
-        expDonorCondition.setOnClickListener {
-            Log.v("Expandable", "Expandable Donor Condition Clicked")
-            if (expDonorCondition.isExpanded){
-                expDonorCondition.collapse()
-            }
-            else {
-                expDonorCondition.expand()
-                expDonorCondition.collapse()
-                expDonorPlot.collapse()
-                expGetDonorPlot.collapse()
-                expGetDonorPlotNoAvailable.collapse()
-            }
-        }
+        view.findViewById<TextView>(R.id.tvAboutPlasmaExpandableParent1).text = getString(R.string.text_donor_condition)
 
         val donorPlotList = res.getStringArray(R.array.donor_plot)
         val donorPlotAdapter = ItemAdapter(requireActivity(), donorPlotList)
-        val lvDonorPlot = expDonorPlot.secondLayout.findViewById<ListView>(R.id.lvAboutPlasmaExpandableItem)
+        val lvDonorPlot = view.findViewById<ListView>(R.id.lvAboutPlasmaExpandableItem2)
         lvDonorPlot.adapter = donorPlotAdapter
-        expDonorPlot.parentLayout.findViewById<TextView>(R.id.tvAboutPlasmaExpandableParent).text = getString(R.string.text_donor_plot)
-        expDonorPlot.setOnClickListener {
-            Log.v("Expandable", "Expandable Donor Plot Clicked")
-            if (expDonorPlot.isExpanded){
-                expDonorPlot.collapse()
-            }
-            else {
-                expDonorPlot.expand()
-                expDonorCondition.collapse()
-                expGetDonorPlot.collapse()
-                expGetDonorPlotNoAvailable.collapse()
-            }
-        }
+        view.findViewById<TextView>(R.id.tvAboutPlasmaExpandableParent2).text = getString(R.string.text_donor_plot)
 
         val getDonorPlotList = res.getStringArray(R.array.get_donor_plot)
         val getDonorPlotAdapter = ItemAdapter(requireActivity(), getDonorPlotList)
-        val lvGetDonorPlot = expGetDonorPlot.secondLayout.findViewById<ListView>(R.id.lvAboutPlasmaExpandableItem)
+        val lvGetDonorPlot = view.findViewById<ListView>(R.id.lvAboutPlasmaExpandableItem3)
         lvGetDonorPlot.adapter = getDonorPlotAdapter
-        expGetDonorPlot.parentLayout.findViewById<TextView>(R.id.tvAboutPlasmaExpandableParent).text = getString(R.string.text_get_donor_plot)
-        expGetDonorPlot.setOnClickListener {
-            Log.v("Expandable", "Expandable Get Donor Plot Clicked")
-            if (expGetDonorPlot.isExpanded){
-                expGetDonorPlot.collapse()
-            }
-            else {
-                expGetDonorPlot.expand()
-                expDonorCondition.collapse()
-                expDonorPlot.collapse()
-                expGetDonorPlotNoAvailable.collapse()
-            }
-        }
+        view.findViewById<TextView>(R.id.tvAboutPlasmaExpandableParent3).text = getString(R.string.text_get_donor_plot)
 
         val getDonorPlotNoAvailableList = res.getStringArray(R.array.get_donor_plot_no_available)
         val getDonorPlotNoAvailableAdapter = ItemAdapter(requireActivity(), getDonorPlotNoAvailableList)
-        val lvGetDonorPlotNoAvailable = expGetDonorPlotNoAvailable.secondLayout.findViewById<ListView>(R.id.lvAboutPlasmaExpandableItem)
+        val lvGetDonorPlotNoAvailable = view.findViewById<ListView>(R.id.lvAboutPlasmaExpandableItem4)
         lvGetDonorPlotNoAvailable.adapter = getDonorPlotNoAvailableAdapter
-        expGetDonorPlotNoAvailable.parentLayout.findViewById<TextView>(R.id.tvAboutPlasmaExpandableParent).text = getString(R.string.text_get_donor_plot_no_available)
-        expGetDonorPlotNoAvailable.setOnClickListener {
-            Log.v("Expandable", "Expandable Get Donor Plot No Available Clicked")
-            if (expGetDonorPlotNoAvailable.isExpanded) {
-                expGetDonorPlotNoAvailable.collapse()
-            }
-            else {
-                expGetDonorPlotNoAvailable.expand()
-                expDonorCondition.collapse()
-                expDonorPlot.collapse()
-                expGetDonorPlot.collapse()
-            }
-        }
+        view.findViewById<TextView>(R.id.tvAboutPlasmaExpandableParent4).text = getString(R.string.text_get_donor_plot_no_available)
     }
 
     class ItemAdapter(private val context: Activity, private val items: Array<String>)
