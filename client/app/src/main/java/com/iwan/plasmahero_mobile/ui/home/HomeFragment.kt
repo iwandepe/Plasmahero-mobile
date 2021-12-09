@@ -84,7 +84,6 @@ class HomeFragment : Fragment() {
                     Log.v("Response success", response.body().toString())
 
                     tvProfileName.text = response.body()?.data?.name
-                    tvProfileDonorTotal.text = response.body()?.data?.history!!.size.toString()
 
                     if (response.body()?.data?.type == "donor")
                         tvProfileType.text = getString(R.string.text_donor_role)
@@ -92,10 +91,14 @@ class HomeFragment : Fragment() {
                         tvProfileType.text = getString(R.string.text_recipient_role)
 
                     val dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
-                    val donorDate = LocalDate.parse(response.body()?.data?.history!![0].donorDate, dateFormat)
 
-                    tvProfileDonorLast.text = donorDate.dayOfMonth.toString() + " " + donorDate.month.toString() + " " + donorDate.year.toString();
-                    tvProfileDonorAgain.text = donorDate.dayOfMonth.toString() + " " + (donorDate.month + 3).toString() + " " + donorDate.year.toString();
+                    if (response.body()?.data?.history != null) {
+                        tvProfileDonorTotal.text = response.body()?.data?.history!!.size.toString()
+                        val donorDate = LocalDate.parse(response.body()?.data?.history!![0].donorDate, dateFormat)
+
+                        tvProfileDonorLast.text = donorDate.dayOfMonth.toString() + " " + donorDate.month.toString() + " " + donorDate.year.toString();
+                        tvProfileDonorAgain.text = donorDate.dayOfMonth.toString() + " " + (donorDate.month + 3).toString() + " " + donorDate.year.toString();
+                    }
                 } else {
                     Log.v("Response failed", response.body().toString())
                     Toast.makeText(requireContext(), "Gagal mendapat data", Toast.LENGTH_SHORT).show()
