@@ -11,13 +11,13 @@ import android.widget.TextView
 import com.iwan.plasmahero_mobile.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.iwan.plasmahero_mobile.data.model.EventModel
 import com.iwan.plasmahero_mobile.data.source.remote.RemoteDataSource
+import com.iwan.plasmahero_mobile.data.source.remote.responses.EventData
 import com.iwan.plasmahero_mobile.data.source.remote.responses.EventResponse
 import retrofit2.Response
 
 class MyEventRecyclerViewAdapter(
-    private var values: ArrayList<EventResponse>,
+    public var values: ArrayList<EventData>,
     private var context: Context? = null
 
 ) : RecyclerView.Adapter<MyEventRecyclerViewAdapter.ViewHolder>() {
@@ -50,15 +50,15 @@ class MyEventRecyclerViewAdapter(
         val call = RemoteDataSource.getEvent()
 
         call.enqueue(
-            object : retrofit2.Callback<List<EventResponse>>{
+            object : retrofit2.Callback<EventResponse>{
 
-                override fun onFailure(call: retrofit2.Call<List<EventResponse>>?, t: Throwable?) {
+                override fun onFailure(call: retrofit2.Call<EventResponse>?, t: Throwable?) {
                     Log.e("getEvents() Failure", t.toString())
                 }
 
-                override fun onResponse(call: retrofit2.Call<List<EventResponse>>?, response: Response<List<EventResponse>>?) {
-                    if(response?.isSuccessful == true){
-                        val rs: List<EventResponse>? = response.body()
+                override fun onResponse(call: retrofit2.Call<EventResponse>?, response: Response<EventResponse>?) {
+                    if(response?.body()?.success == true){
+                        val rs: List<EventData>? = response.body()?.data
                         values = ArrayList(rs)
                         notifyDataSetChanged()
 

@@ -1,7 +1,5 @@
 package com.iwan.plasmahero_mobile.data.source.remote.api
 
-import com.iwan.plasmahero_mobile.data.model.EventModel
-import com.iwan.plasmahero_mobile.data.model.FaqModel
 import com.iwan.plasmahero_mobile.data.source.remote.posts.DonorPost
 import com.iwan.plasmahero_mobile.data.source.remote.posts.LoginPost
 import com.iwan.plasmahero_mobile.data.source.remote.posts.RecipientPost
@@ -18,7 +16,8 @@ import retrofit2.http.*
 import java.io.IOException
 
 
-const val BASE_URL = "http://192.168.0.102:8000/api/"
+//const val BASE_URL = "http://192.168.0.102:8000/api/"
+const val BASE_URL = "http://172.16.80.117:8000/api/"
 //private const val BASE_URL = "https://cahindo.xyz/lara/"
 
 interface ApiService {
@@ -44,11 +43,11 @@ interface ApiService {
         @Header("Authorization") token: String
     ): Call<RecipientResponse>
 
-    @GET("event")
-    fun getEvents() : Call<List<EventResponse>>
+    @GET("events")
+    fun getEvents() : Call<EventResponse>
 
-    @GET("faq")
-    fun getFaqs() : Call<List<FaqResponse>>
+    @GET("faqs")
+    fun getFaqs() : Call<FaqResponse>
 
     @GET
     fun getProfileById(

@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.iwan.plasmahero_mobile.R
 import com.iwan.plasmahero_mobile.data.source.remote.RemoteDataSource
+import com.iwan.plasmahero_mobile.data.source.remote.responses.FaqData
 import com.iwan.plasmahero_mobile.data.source.remote.responses.FaqResponse
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
@@ -22,7 +23,7 @@ import retrofit2.Response
 class FaqFragment : Fragment() {
 
     private var columnCount = 1
-    var faqList: ArrayList<FaqResponse> = ArrayList()
+    var faqList: ArrayList<FaqData> = ArrayList()
     var faqAdapter = MyFaqRecyclerViewAdapter(faqList)
 
 
@@ -48,7 +49,8 @@ class FaqFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                faqAdapter.fetchFaqData()
+                if(faqAdapter.values.isEmpty())
+                    faqAdapter.fetchFaqData()
                 adapter = faqAdapter
 
             }

@@ -60,14 +60,14 @@ object RemoteDataSource {
         return call
     }
 
-    fun getEvent(): Call<List<EventResponse>> {
+    fun getEvent(): Call<EventResponse> {
         val apiService = DataService.create()
         val call = apiService.getEvents()
 
         return call
     }
 
-    fun getFaq(): Call<List<FaqResponse>> {
+    fun getFaq(): Call<FaqResponse> {
         val apiService = DataService.create()
         val call = apiService.getFaqs()
 

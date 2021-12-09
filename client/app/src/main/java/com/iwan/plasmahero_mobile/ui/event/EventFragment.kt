@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.iwan.plasmahero_mobile.R
 import com.iwan.plasmahero_mobile.data.source.remote.RemoteDataSource
+import com.iwan.plasmahero_mobile.data.source.remote.responses.EventData
 import com.iwan.plasmahero_mobile.data.source.remote.responses.EventResponse
 import retrofit2.Response
 
@@ -20,7 +21,7 @@ import retrofit2.Response
 class EventFragment : Fragment() {
 
     private var columnCount = 2
-    private var eventList : ArrayList<EventResponse> = ArrayList()
+    private var eventList : ArrayList<EventData> = ArrayList()
     val eventAdapter = MyEventRecyclerViewAdapter(eventList)
 
 
@@ -45,7 +46,8 @@ class EventFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                eventAdapter.fetchEventData()
+                if(eventAdapter.values.isEmpty())
+                    eventAdapter.fetchEventData()
                 adapter = eventAdapter
 
             }
