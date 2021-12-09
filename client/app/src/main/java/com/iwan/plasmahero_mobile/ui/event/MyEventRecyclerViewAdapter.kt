@@ -37,7 +37,7 @@ class MyEventRecyclerViewAdapter(
         holder.tvDecs.text = item.desc
 
         Glide.with(context!!)
-            .load(item.imgUrl)
+            .load("http://plasmahero.help/" + item.imgUrl)
             .override(imgHolder.width, imgHolder.height)
             .centerCrop()
             .diskCacheStrategy(DiskCacheStrategy.ALL)

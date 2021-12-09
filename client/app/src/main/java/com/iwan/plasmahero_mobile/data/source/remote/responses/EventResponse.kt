@@ -12,15 +12,15 @@ data class EventResponse(
 )
 
 data class EventData(
-        @SerializedName("title")
+        @SerializedName("judul")
         var title: String? = null,
 
-        @SerializedName("date")
+        @SerializedName("tgl")
         var date: String? = null,
 
-        @SerializedName("desc")
+        @SerializedName("deskripsi")
         var desc: String? = null,
 
-        @SerializedName("imgUrl")
+        @SerializedName("img_filename")
         var imgUrl: String? = null,
 )
