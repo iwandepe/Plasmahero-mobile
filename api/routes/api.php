@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\ContentController;
 use App\Http\Controllers\API\DonorController;
 use App\Http\Controllers\API\DonorHistoryController;
 use App\Http\Controllers\API\RecipientController;
@@ -24,3 +25,7 @@ Route::middleware('auth:sanctum')->group(function () {
   Route::get('donors/{userId}/histories', [DonorHistoryController::class, 'getHistoriesByUserId']);
   Route::post('donors/evidence', [DonorHistoryController::class, 'storeDonorEvidence']);
 });
+
+Route::get('faqs', [ContentController::class, 'getAllFaqs']);
+Route::get('events', [ContentController::class, 'getAllEvents']);
+Route::get('udds', [ContentController::class, 'getAllUdds']);

@@ -19,3 +19,4 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
 });
 
 require __DIR__ . '/auth.php';
+require __DIR__ . '/api.php';
