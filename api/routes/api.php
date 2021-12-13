@@ -17,6 +17,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
   Route::get('recipients', [RecipientController::class, 'getAllRecipients']);
   Route::post('recipients', [RecipientController::class, 'storeRecipient']);
+  Route::get('recipients/{id}/poster', [RecipientController::class, 'getPosterUrl']);
 
   Route::get('users', [UserController::class, 'getAllUsers']);
   Route::get('profile/{id}', [UserController::class, 'getProfileById']);

@@ -120,8 +120,8 @@
               <td>{{$data->blood_type}} {{$data->blood_rhesus}}</td>
               <td><a href="https://wa.me/{{$data->phone}}" class="btn btn-sm btn-success"><i class="fa fa-whatsapp"></i></a></td>
               <td>
+                <!-- Button and modal dialog for recipient detail -->
                 <button class="btn btn-sm btn-info text-center border-style-none shadow-none" data-toggle="modal" data-target="#recipient{{$data->id}}" style="width: 80px;">Detail</button>
-
                 <div class="modal fade" id="recipient{{$data->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                   <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
@@ -135,6 +135,23 @@
                         <img src="{{url($data->hospital_letter_path)}}" class="border">
                       </div>
                       <div class="modal-footer">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Button and modal dialog for recipient verification data and confirming -->
+                <button class="btn btn-sm btn-success mx-auto mb-1" data-toggle="modal" data-target="#verification{{$data->id}}" style="width: 80px;">Verifikasi</button>
+                <div class="modal fade" id="verification{{$data->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-center" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header pb-0">
+                        <h6 class="modal-title" id="exampleModalLongTitle">Apakah anda yakin?</h6>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+
+                        <a class="btn btn-success" href="{{ route('recipient-verify', ['userId' => $data->user_id]) }}">Verifikasi</a>
                       </div>
                     </div>
                   </div>

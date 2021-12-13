@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Models\Recipient;
 use App\Models\User;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -20,6 +21,16 @@ class RecipientController extends BaseController
         return $this->handleResponse($recipients);
     }
 
+    public function getPosterUrl($id)
+    {
+        $recipient = Recipient::where('id', $id)->first();
+
+        $baseUrl = env("APP_URL", "localhost:8000");
+        $result['poster_url'] = $baseUrl . $recipient['generated_poster_path'];
+
+        return $this->handleResponse($result);
+    }
+
     public function storeRecipient(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -30,6 +41,7 @@ class RecipientController extends BaseController
             return $this->handleError($validator->errors());
         }
         try {
+            // Handle posted image with base64
             $image = Image::make(file_get_contents($request->hospital_letter));
             $image->stream();
             $path = '/donors/positive/' . time() . ".png";
