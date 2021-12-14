@@ -1,18 +1,24 @@
 <?php
 
+use App\Http\Controllers\Web\DonorController;
+use App\Http\Controllers\Web\RecipientController;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
+    Route::get('/', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
+
+    Route::get('/donors', [DonorController::class, 'getDonorPage'])->name('donors');
+    Route::get('/recipients', [RecipientController::class, 'getRecipientPage'])->name('recipients');
+    Route::get('/donor-history', [DonorController::class, 'getDonorHistoryPage'])->name('donor-history');
+    Route::get('/recipient/{userId}/verify', [RecipientController::class, 'verifyRecipient'])->name('recipient-verify');
+    Route::get('/donors/{userId}/verify', [DonorController::class, 'verifyDonor'])->name('donor-verify');
+});
+
+require __DIR__ . '/auth.php';
+require __DIR__ . '/api.php';
