@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Donor;
+use Exception;
 use Illuminate\Support\Facades\DB;
 
 class DonorController extends Controller
@@ -25,5 +26,18 @@ class DonorController extends Controller
             ->get();
 
         return view('admin.donor-history', compact(['histories']));
+    }
+
+    public function verifyDonor($userId)
+    {
+        try {
+            $donor = Donor::where('user_id', $userId)->first();
+
+            Donor::where('id', $donor->id)->update(array('is_valid' => 1));
+
+            return back()->with('success', 'Berhasil memvalidasi data pendonor');
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
     }
 }

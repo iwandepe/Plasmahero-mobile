@@ -17,6 +17,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
     Route::get('/recipients', [RecipientController::class, 'getRecipientPage'])->name('recipients');
     Route::get('/donor-history', [DonorController::class, 'getDonorHistoryPage'])->name('donor-history');
     Route::get('/recipient/{userId}/verify', [RecipientController::class, 'verifyRecipient'])->name('recipient-verify');
+    Route::get('/donors/{userId}/verify', [DonorController::class, 'verifyDonor'])->name('donor-verify');
 });
 
 require __DIR__ . '/auth.php';
