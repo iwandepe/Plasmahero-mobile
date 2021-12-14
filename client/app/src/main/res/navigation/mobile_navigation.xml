@@ -9,7 +9,14 @@
         android:id="@+id/navigation_home"
         android:name="com.iwan.plasmahero_mobile.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_about_plasma"
+            app:destination="@id/navigation_about_plasma" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_donor_history"
+            app:destination="@id/navigation_donor_history" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -22,4 +29,33 @@
         android:name="com.iwan.plasmahero_mobile.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_faq"
+        android:name="com.iwan.plasmahero_mobile.ui.faq.FaqFragment"
+        android:label="FAQ"
+        tools:layout="@layout/fragment_faq" />
+
+    <fragment
+        android:id="@+id/navigation_udd"
+        android:name="com.iwan.plasmahero_mobile.ui.udd.UddFragment"
+        android:label="UDD"
+        tools:layout="@layout/fragment_udd" />
+
+    <fragment
+        android:id="@+id/navigation_event"
+        android:name="com.iwan.plasmahero_mobile.ui.event.EventFragment"
+        android:label="Event"
+        tools:layout="@layout/fragment_event" />
+    <fragment
+        android:id="@+id/navigation_about_plasma"
+        android:name="com.iwan.plasmahero_mobile.ui.home.AboutPlasmaFragment"
+        android:label="fragment_about_plasma"
+        tools:layout="@layout/fragment_about_plasma" />
+    <fragment
+        android:id="@+id/navigation_donor_history"
+        android:name="com.iwan.plasmahero_mobile.ui.home.DonorHistoryFragment"
+        android:label="fragment_donor_history"
+        tools:layout="@layout/fragment_donor_history" />
+
 </navigation>

@@ -2,4 +2,31 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="fragment_margin">16dp</dimen>
+    <dimen name="fragment_horizontal_margin">16dp</dimen>
+    <dimen name="fragment_vertical_margin">16dp</dimen>
+    <dimen name="fragment_title">42dp</dimen>
+    <dimen name="fragment_title_small">32dp</dimen>
+    <dimen name="large_margin">32dp</dimen>
+    <dimen name="small_icon_size">24dp</dimen>
+    <dimen name="default_margin">16dp</dimen>
+    <dimen name="small_margin">8dp</dimen>
+    <dimen name="xsmall_margin">4dp</dimen>
+    <dimen name="xxsmall_margin">2dp</dimen>
+    <dimen name="text_fragment_title">24dp</dimen>
+    <dimen name="text_profile_card">18dp</dimen>
+    <dimen name="text_form">14dp</dimen>
+    <dimen name="text_form_label">16dp</dimen>
+    <dimen name="form_padding">4dp</dimen>
+    <dimen name="form_padding_large">16dp</dimen>
+    <dimen name="height_option_role_image">180dp</dimen>
+    <dimen name="button_padding">60dp</dimen>
+    <dimen name="no_padding">0dp</dimen>
+    <dimen name="profile_icon_size">80dp</dimen>
+    <dimen name="profile_card_height">240dp</dimen>
+    <dimen name="text_size_small">12dp</dimen>
+    <dimen name="history_item_height">100dp</dimen>
+    <dimen name="title_list_view">24dp</dimen>
 </resources>
