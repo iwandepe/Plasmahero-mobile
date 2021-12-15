@@ -141,7 +141,9 @@
                 </div>
 
                 <!-- Button and modal dialog for donor verification data and confirming -->
+                @if (!$data->is_valid)
                 <button class="btn btn-sm btn-success mx-auto mb-1" data-toggle="modal" data-target="#verification{{$data->id}}" style="width: 80px;">Verifikasi</button>
+                @endif
                 <div class="modal fade" id="verification{{$data->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-center" role="document">
                     <div class="modal-content">

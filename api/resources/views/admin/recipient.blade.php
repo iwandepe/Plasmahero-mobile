@@ -89,10 +89,7 @@
       <div class="card-header border-0">
         <div class="container">
           <div class="row">
-            <h3>Data Permintaan Plasma Terverifikasi</h3>
-            <div class="ml-auto">
-              <a href="/admin/permintaanplasma/export/2" class="btn btn-sm btn-primary">Download data</a>
-            </div>
+            <h3>Data Permintaan Plasma</h3>
           </div>
         </div>
       </div>
@@ -141,7 +138,9 @@
                 </div>
 
                 <!-- Button and modal dialog for recipient verification data and confirming -->
+                @if (!$data->is_valid)
                 <button class="btn btn-sm btn-success mx-auto mb-1" data-toggle="modal" data-target="#verification{{$data->id}}" style="width: 80px;">Verifikasi</button>
+                @endif
                 <div class="modal fade" id="verification{{$data->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-center" role="document">
                     <div class="modal-content">
