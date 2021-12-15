@@ -1,8 +1,10 @@
 package com.iwan.plasmahero_mobile.ui.home
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.Bundle
@@ -10,10 +12,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.view.Window
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -148,6 +148,49 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun showDonorEvidenceDialog(bitmapImage: Bitmap, encodedImage: String) {
+        val dialog = Dialog(requireActivity())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.fragment_home_dialog_upload)
+        val etUdd = dialog.findViewById<EditText>(R.id.etDialogUdd)
+        val btnUpload = dialog.findViewById<Button>(R.id.btnDialogUpload)
+        val ivDonorEvidence = dialog.findViewById<ImageView>(R.id.ivDialogDonorEvidence)
+
+        btnUpload.setOnClickListener {
+            val prefs = SessionManager.getSharedPreferences(requireActivity())
+            val token = "Bearer " + prefs.token
+            val userId = prefs.userId
+
+            val donorEvidencePost = DonorEvidencePost(userId, etUdd.text.toString(), encodedImage)
+
+            val call = RemoteDataSource.createDonorHistory(donorEvidencePost, token.toString())
+            call.enqueue(object : Callback<DonorEvidenceResponse> {
+                @RequiresApi(Build.VERSION_CODES.O)
+                override fun onResponse(call: Call<DonorEvidenceResponse>, response: Response<DonorEvidenceResponse>) {
+                    Log.d("Response", response.toString())
+                    if (response.body()?.success == true) {
+                        Log.v("Response success", response.body().toString())
+                        Toast.makeText(requireContext(), "Update data donor berhasil", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Log.v("Response failed", response.body().toString())
+                        Toast.makeText(requireContext(), "Gagal mendapat data", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<DonorEvidenceResponse>, t: Throwable) {
+                    Log.v("Response", "Get Profile Unsuccessfull")
+                    Log.v("Response", t.message.toString())
+                    Toast.makeText(requireContext(), "Terjadi error saat meminta data", Toast.LENGTH_SHORT).show()
+                }
+            })
+            dialog.dismiss()
+        }
+        dialog.show()
+
+//        ivDonorEvidence.setImageBitmap(bitmapImage)
+    }
+
     override fun onRequestPermissionsResult(
             requestCode: Int,
             permissions: Array<out String>,
@@ -175,32 +218,7 @@ class HomeFragment : Fragment() {
 
         Log.v("BASE64 IMAGE", encodedImage)
 
-        val prefs = SessionManager.getSharedPreferences(requireActivity())
-        val token = "Bearer " + prefs.token
-        val userId = prefs.userId
-
-        val donorEvidencePost = DonorEvidencePost(userId, "UDD Puskesma Sambi", encodedImage)
-
-        val call = RemoteDataSource.createDonorHistory(donorEvidencePost, token.toString())
-        call.enqueue(object : Callback<DonorEvidenceResponse> {
-            @RequiresApi(Build.VERSION_CODES.O)
-            override fun onResponse(call: Call<DonorEvidenceResponse>, response: Response<DonorEvidenceResponse>) {
-                Log.d("Response", response.toString())
-                if (response.body()?.success == true) {
-                    Log.v("Response success", response.body().toString())
-                    Toast.makeText(requireContext(), "Update data donor berhasil", Toast.LENGTH_SHORT).show()
-                } else {
-                    Log.v("Response failed", response.body().toString())
-                    Toast.makeText(requireContext(), "Gagal mendapat data", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: Call<DonorEvidenceResponse>, t: Throwable) {
-                Log.v("Response", "Get Profile Unsuccessfull")
-                Log.v("Response", t.message.toString())
-                Toast.makeText(requireContext(), "Terjadi error saat meminta data", Toast.LENGTH_SHORT).show()
-            }
-        })
+        showDonorEvidenceDialog(selectedImage, encodedImage)
     }
 
     private fun chooseImageGallery(code: Int) {

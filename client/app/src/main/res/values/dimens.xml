@@ -22,7 +22,11 @@
     <dimen name="form_padding">4dp</dimen>
     <dimen name="form_padding_large">16dp</dimen>
     <dimen name="height_option_role_image">180dp</dimen>
+    <dimen name="home_navbar_height">54dp</dimen>
+    <dimen name="form_height">32dp</dimen>
     <dimen name="button_padding">60dp</dimen>
+    <dimen name="button_padding_small">30dp</dimen>
+    <dimen name="dialog_content_width">300dp</dimen>
     <dimen name="no_padding">0dp</dimen>
     <dimen name="profile_icon_size">80dp</dimen>
     <dimen name="profile_card_height">240dp</dimen>

@@ -33,6 +33,7 @@
     <string name="title_donor_history_fragment">Riwayat donor kamu</string>
     <string name="form_age_label">Umur</string>
     <string name="form_address_label">Alamat</string>
+    <string name="form_udd_label">Tempat donor darah</string>
     <string name="form_hospital_name_label">Rumah Sakit</string>
     <string name="form_hospital_city_label">Kota Rumah Sakit</string>
     <string name="form_hospital_letter_label">Upload surat dari rumah sakit</string>
@@ -46,6 +47,7 @@
     <string name="form_negative_evidence">Upload bukti negatif</string>
     <string name="form_positive_evidence">Upload bukti positif</string>
     <string name="text_upload_file">Upload File</string>
+    <string name="text_upload">Upload</string>
     <string name="button_save">Simpan</string>
     <string name="text_file_picked">Ubah file</string>
     <string name="text_donor_role">Pendonor</string>
