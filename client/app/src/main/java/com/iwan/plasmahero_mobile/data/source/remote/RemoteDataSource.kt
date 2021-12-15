@@ -2,10 +2,7 @@ package com.iwan.plasmahero_mobile.data.source.remote
 
 import com.iwan.plasmahero_mobile.data.source.remote.api.BASE_URL
 import com.iwan.plasmahero_mobile.data.source.remote.api.DataService
-import com.iwan.plasmahero_mobile.data.source.remote.posts.DonorPost
-import com.iwan.plasmahero_mobile.data.source.remote.posts.LoginPost
-import com.iwan.plasmahero_mobile.data.source.remote.posts.RecipientPost
-import com.iwan.plasmahero_mobile.data.source.remote.posts.RegisterPost
+import com.iwan.plasmahero_mobile.data.source.remote.posts.*
 import com.iwan.plasmahero_mobile.data.source.remote.responses.*
 import retrofit2.Call
 
@@ -73,6 +70,13 @@ object RemoteDataSource {
         val apiService = DataService.create()
         val url = BASE_URL + "recipients/" + id.toString() + "/poster"
         val call = apiService.getPosterById(url, token)
+
+        return call
+    }
+
+    fun createDonorHistory(data: DonorEvidencePost, token: String): Call<DonorEvidenceResponse> {
+        val apiService = DataService.create()
+        val call = apiService.createDonorHistory(data, token)
 
         return call
     }

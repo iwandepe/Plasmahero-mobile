@@ -1,9 +1,6 @@
 package com.iwan.plasmahero_mobile.data.source.remote.api
 
-import com.iwan.plasmahero_mobile.data.source.remote.posts.DonorPost
-import com.iwan.plasmahero_mobile.data.source.remote.posts.LoginPost
-import com.iwan.plasmahero_mobile.data.source.remote.posts.RecipientPost
-import com.iwan.plasmahero_mobile.data.source.remote.posts.RegisterPost
+import com.iwan.plasmahero_mobile.data.source.remote.posts.*
 import com.iwan.plasmahero_mobile.data.source.remote.responses.*
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -60,6 +57,12 @@ interface ApiService {
         @Url url: String,
         @Header("Authorization") token: String
     ) : Call<PosterResponse>
+
+    @POST("donors/evidence")
+    fun createDonorHistory(
+            @Body data: DonorEvidencePost,
+            @Header("Authorization") token: String
+    ) : Call<DonorEvidenceResponse>
 }
 
 object DataService {
