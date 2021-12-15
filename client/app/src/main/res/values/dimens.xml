@@ -19,6 +19,7 @@
     <dimen name="text_profile_card">18dp</dimen>
     <dimen name="text_form">14dp</dimen>
     <dimen name="text_form_label">16dp</dimen>
+    <dimen name="text_small">12dp</dimen>
     <dimen name="form_padding">4dp</dimen>
     <dimen name="form_padding_large">16dp</dimen>
     <dimen name="height_option_role_image">180dp</dimen>

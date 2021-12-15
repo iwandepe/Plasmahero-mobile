@@ -72,6 +72,8 @@
     <string name="text_get_donor_plot">Alur Dapat Plasma (Stok Tersedia)</string>
     <string name="text_get_donor_plot_no_available">Alur Dapat Plasma (Stok Kosong)</string>
     <string name="text_dummy">Dummy text</string>
+    <string name="text_verified">(verified)</string>
+    <string name="text_unverified">(unverified)</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

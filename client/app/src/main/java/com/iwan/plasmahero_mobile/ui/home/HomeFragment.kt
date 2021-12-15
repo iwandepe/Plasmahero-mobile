@@ -53,6 +53,8 @@ class HomeFragment : Fragment() {
         val tvProfileDonorTotal = view.findViewById<TextView>(R.id.tvProfileDonorTotal)
         val tvProfileDonorLast = view.findViewById<TextView>(R.id.tvProfileDonorLast)
         val tvProfileDonorAgain = view.findViewById<TextView>(R.id.tvProfileDonorAgain)
+        val tvStatusVerified = view.findViewById<TextView>(R.id.tvStatusVerified)
+        val tvStatusUnverified = view.findViewById<TextView>(R.id.tvStatusUnverified)
 
         val btnLogout = view.findViewById<Button>(R.id.btnLogout)
         val mcvHomeDonorHistory = view.findViewById<MaterialCardView>(R.id.mcvHomeDonorHistory)
@@ -102,17 +104,20 @@ class HomeFragment : Fragment() {
                     Log.v("Response success", response.body().toString())
 
                     tvProfileName.text = response.body()?.data?.name
+                    if (response.body()?.data?.donor?.isValid == 1)
+                        tvStatusVerified.visibility = View.VISIBLE
+                    else
+                        tvStatusUnverified.visibility = View.VISIBLE
 
-                    if (response.body()?.data?.type == "donor"){
-                        tvProfileType.text = getString(R.string.text_donor_role)
-                        llDonorInfo.visibility = View.VISIBLE
-                        btnUploadDonorEvidence.visibility = View.VISIBLE
-                        mcvHomeDonorHistory.visibility = View.VISIBLE
-                    }
-                    else {
-                        tvProfileType.text = getString(R.string.text_recipient_role)
-                        mcvHomeRecipientPoster.visibility = View.VISIBLE
-                    }
+                        if (response.body()?.data?.type == "donor") {
+                            tvProfileType.text = getString(R.string.text_donor_role)
+                            llDonorInfo.visibility = View.VISIBLE
+                            btnUploadDonorEvidence.visibility = View.VISIBLE
+                            mcvHomeDonorHistory.visibility = View.VISIBLE
+                        } else {
+                            tvProfileType.text = getString(R.string.text_recipient_role)
+                            mcvHomeRecipientPoster.visibility = View.VISIBLE
+                        }
 
                     val dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
 

@@ -2,29 +2,24 @@ package com.iwan.plasmahero_mobile.ui.udd
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
-import com.iwan.plasmahero_mobile.R
-import com.iwan.plasmahero_mobile.ui.udd.dummy.DummyContent
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.net.Uri
+import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
-
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -32,7 +27,11 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.iwan.plasmahero_mobile.R
 import com.iwan.plasmahero_mobile.data.source.remote.responses.UddValue
+import com.iwan.plasmahero_mobile.ui.udd.dummy.DummyContent
 import kotlin.math.*
 
 class UddFragment : Fragment() {
@@ -69,9 +68,12 @@ class UddFragment : Fragment() {
 
             gMap = it
             gMap!!.animateCamera(
-                CameraUpdateFactory.newLatLngZoom( defaultLocation, 15F)
+                CameraUpdateFactory.newLatLngZoom( defaultLocation, 5F)
             )
 
+            val uddList = getUddList()
+            for (udd in uddList)
+                gMap!!.addMarker(MarkerOptions().position(LatLng(udd.lat!!, udd.lng!!)).title(udd.name))!!.showInfoWindow()
         }
 
         btnOpenMaps.setOnClickListener{
@@ -94,7 +96,7 @@ class UddFragment : Fragment() {
                 closestUdd = getClosestUdd(lastKnownLocation!!.latitude, lastKnownLocation!!.longitude)
                 val d = calcDistanceInKm(lastKnownLocation!!.latitude, lastKnownLocation!!.longitude, closestUdd!!.lat!!, closestUdd!!.lng!!)
 
-                gMap!!.addMarker(MarkerOptions().position(LatLng(closestUdd!!.lat!!, closestUdd!!.lng!!)))
+//                gMap!!.addMarker(MarkerOptions().position(LatLng(closestUdd!!.lat!!, closestUdd!!.lng!!)))
                 gMap!!.animateCamera(
                     CameraUpdateFactory.newLatLngZoom( LatLng(closestUdd!!.lat!!, closestUdd!!.lng!!),15F )
                 )
