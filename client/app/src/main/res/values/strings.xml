@@ -28,6 +28,7 @@
     <string name="text_is_registered">Belum memiliki akun?</string>
     <string name="text_role_fragment">Pilih peran yang kamu!</string>
     <string name="text_fill_donor_data_title">Isi data donor kamu!</string>
+    <string name="text_poster_title">Poster pencarian plasma kamu!</string>
     <string name="text_fill_recipinet_data_title">Isi data pasien!</string>
     <string name="title_donor_history_fragment">Riwayat donor kamu</string>
     <string name="form_age_label">Umur</string>
@@ -50,6 +51,7 @@
     <string name="text_donor_role">Pendonor</string>
     <string name="text_recipient_role">Pencari Donor</string>
     <string name="button_logout">Logout</string>
+    <string name="button_share">Bagikan</string>
     <string name="dummy_profile_name">Bob Marley</string>
     <string name="dummy_profile_role">Pendonor</string>
     <string name="text_donor_total">Total donor</string>
@@ -59,6 +61,7 @@
     <string name="dummy_none">-</string>
     <string name="text_upload_donor_evidence">Upload bukti donor</string>
     <string name="text_history">Riwayat Donor</string>
+    <string name="text_recipient_poster">Poster Plasma</string>
     <string name="text_about_plasma">Tentang Plasma</string>
     <string name="title_about_plasma">Tentang Plasma Konvalesen</string>
     <string name="about_plasma_subtitle">Merupakan salah satu metode imunisasi pasif, yang dilakukan dengan memberikan plasma orang yang telah sembuh dari COVID-19, kepada pasien COVID-19 yang sedang dirawat. Terapi Plasma Konvalesen merupakan terapi tambahan yang masih dalam proses penelitian di Indonesia.</string>

@@ -8,11 +8,6 @@
     android:layout_margin="@dimen/fragment_margin"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/text_home"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
     <RelativeLayout
         android:id="@+id/rlProfileInfo"
         android:layout_width="match_parent"
@@ -38,14 +33,14 @@
                 android:id="@+id/tvProfileName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/dummy_profile_name"
+                android:text="@string/dummy_none"
                 android:textSize="@dimen/text_form_label"/>
 
             <TextView
                 android:id="@+id/tvProfileType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/dummy_profile_role"
+                android:text="@string/dummy_none"
                 android:textStyle="bold"
                 android:textSize="@dimen/text_form"/>
 
@@ -56,7 +51,8 @@
             android:layout_below="@+id/llProfileName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -123,14 +119,15 @@
     </RelativeLayout>
 
     <Button
-        android:id="@+id/btnProfileAddHistory"
+        android:id="@+id/btnUploadDonorEvidence"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/text_upload_donor_evidence"
         android:backgroundTint="@color/yellow"
         android:layout_marginTop="@dimen/large_margin"
         android:paddingHorizontal="@dimen/button_padding"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:visibility="gone"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -144,7 +141,8 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/small_margin"
             android:layout_weight="1"
-            app:cardBackgroundColor="@color/yellow_soft">
+            app:cardBackgroundColor="@color/yellow_soft"
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -160,6 +158,36 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/text_history"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/text_profile_card"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcvHomeRecipientPoster"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/small_margin"
+            android:layout_weight="1"
+            app:cardBackgroundColor="@color/yellow_soft"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_option_role_image"
+                    android:src="@drawable/donor_mascot"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_recipient_poster"
                     android:textAlignment="center"
                     android:textSize="@dimen/text_profile_card"/>
 

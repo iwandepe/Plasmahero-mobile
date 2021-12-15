@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_donor_history"
             app:destination="@id/navigation_donor_history" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_poster"
+            app:destination="@id/navigation_poster" />
     </fragment>
 
     <fragment
@@ -57,5 +60,10 @@
         android:name="com.iwan.plasmahero_mobile.ui.home.DonorHistoryFragment"
         android:label="fragment_donor_history"
         tools:layout="@layout/fragment_donor_history" />
+    <fragment
+        android:id="@+id/navigation_poster"
+        android:name="com.iwan.plasmahero_mobile.ui.home.PosterFragment"
+        android:label="fragment_poster"
+        tools:layout="@layout/fragment_poster" />
 
 </navigation>

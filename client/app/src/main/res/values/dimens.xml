@@ -29,4 +29,5 @@
     <dimen name="text_size_small">12dp</dimen>
     <dimen name="history_item_height">100dp</dimen>
     <dimen name="title_list_view">24dp</dimen>
+    <dimen name="main_image_min_height">100dp</dimen>
 </resources>

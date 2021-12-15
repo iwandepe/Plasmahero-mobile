@@ -2,6 +2,7 @@ package com.iwan.plasmahero_mobile.ui.home
 
 import android.app.Activity
 import android.content.Intent
+import android.opengl.Visibility
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -31,22 +33,12 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 class HomeFragment : Fragment() {
-
-    private lateinit var homeViewModel: HomeViewModel
-
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-                ViewModelProvider(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -61,6 +53,10 @@ class HomeFragment : Fragment() {
         val btnLogout = view.findViewById<Button>(R.id.btnLogout)
         val mcvHomeDonorHistory = view.findViewById<MaterialCardView>(R.id.mcvHomeDonorHistory)
         val mcvHomeAboutPlasma = view.findViewById<MaterialCardView>(R.id.mcvHomeAboutPlasma)
+        val mcvHomeRecipientPoster = view.findViewById<MaterialCardView>(R.id.mcvHomeRecipientPoster)
+
+        val llDonorInfo = view.findViewById<LinearLayout>(R.id.llDonorInfo)
+        val btnUploadDonorEvidence = view.findViewById<Button>(R.id.btnUploadDonorEvidence)
 
         mcvHomeAboutPlasma.setOnClickListener {
             val navController = findNavController()
@@ -70,6 +66,11 @@ class HomeFragment : Fragment() {
         mcvHomeDonorHistory.setOnClickListener {
             val navController = findNavController()
             navController.navigate(R.id.action_navigation_home_to_navigation_donor_history)
+        }
+
+        mcvHomeRecipientPoster.setOnClickListener{
+            val navController = findNavController()
+            navController.navigate(R.id.action_navigation_home_to_navigation_poster)
         }
 
         val prefs = SessionManager.getSharedPreferences(requireActivity())
@@ -85,10 +86,16 @@ class HomeFragment : Fragment() {
 
                     tvProfileName.text = response.body()?.data?.name
 
-                    if (response.body()?.data?.type == "donor")
+                    if (response.body()?.data?.type == "donor"){
                         tvProfileType.text = getString(R.string.text_donor_role)
-                    else
+                        llDonorInfo.visibility = View.VISIBLE
+                        btnUploadDonorEvidence.visibility = View.VISIBLE
+                        mcvHomeDonorHistory.visibility = View.VISIBLE
+                    }
+                    else {
                         tvProfileType.text = getString(R.string.text_recipient_role)
+                        mcvHomeRecipientPoster.visibility = View.VISIBLE
+                    }
 
                     val dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
 

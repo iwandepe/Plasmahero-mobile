@@ -28,6 +28,7 @@ import com.iwan.plasmahero_mobile.data.source.remote.responses.RecipientResponse
 import com.iwan.plasmahero_mobile.utils.Helper
 import com.iwan.plasmahero_mobile.utils.SessionManager
 import com.iwan.plasmahero_mobile.utils.SessionManager.token
+import com.iwan.plasmahero_mobile.utils.SessionManager.userId
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -90,8 +91,12 @@ class RecipientFormFragment : Fragment() {
         }
 
         btnSubmit.setOnClickListener(View.OnClickListener {
+            val prefs = SessionManager.getSharedPreferences(requireActivity())
+            val token = "Bearer " + prefs.token
+            val userId = prefs.userId
+
             val recipientPost = RecipientPost(
-                userId = 1,
+                userId = userId,
                 phone = etPhone.text.toString(),
                 bloodRhesus = spinnerBloodRhesus.selectedItem.toString(),
                 bloodType = spinnerBloodType.selectedItem.toString(),
@@ -102,8 +107,6 @@ class RecipientFormFragment : Fragment() {
             Log.v("POST", "Create recipient")
             Log.v("VAR: recipientPost", recipientPost.toString())
 
-            val prefs = SessionManager.getSharedPreferences(requireActivity())
-            val token = "Bearer " + prefs.token
             val call = RemoteDataSource.createRecipient(recipientPost, token.toString())
             call.enqueue(object : Callback<RecipientResponse> {
                 override fun onResponse(call: Call<RecipientResponse>, response: Response<RecipientResponse>) {
