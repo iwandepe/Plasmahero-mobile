@@ -7,8 +7,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 
-const val BASE_URL = "http://192.168.0.102:8000/api/"
-//const val BASE_URL = "http://172.16.80.117:8000/api/"
+//const val BASE_URL = "http://192.168.0.102:8000/api/"
+const val BASE_URL = "http://172.16.80.117:8000/api/"
 //private const val BASE_URL = "https://cahindo.xyz/lara/"
 
 interface ApiService {

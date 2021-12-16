@@ -168,6 +168,7 @@ class DonorFormFragment : Fragment() {
             Log.v("POST", "Create donor")
             Log.v("VAR: donorPost", donorPost.toString())
 
+            Log.v("TOKEN", token)
             val call = RemoteDataSource.createDonor(donorPost, token.toString())
             call.enqueue(object : Callback<DonorResponse> {
                 override fun onResponse(call: Call<DonorResponse>, response: Response<DonorResponse>) {

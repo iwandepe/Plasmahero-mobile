@@ -20,8 +20,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
@@ -42,6 +41,7 @@ class UddFragment : Fragment() {
     private var closestUdd : UddValue? = null
     private var gMap: GoogleMap? = null
     private val defaultLocation = LatLng(-7.28, 112.79)
+    lateinit var  tvUddName : TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,7 +59,7 @@ class UddFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_udd, container, false)
         val btnUdd : Button = view.findViewById(R.id.btnUdd)
         val btnOpenMaps : Button = view.findViewById(R.id.btnOpenMaps)
-        val tvUddName : TextView = view.findViewById(R.id.tvUddName)
+        tvUddName =  view.findViewById(R.id.tvUddName)
         val tvUddAddress : TextView = view.findViewById(R.id.tvUddAddress)
 
         val mapFragment : SupportMapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
@@ -92,19 +92,7 @@ class UddFragment : Fragment() {
 
         btnUdd.setOnClickListener{
             getDeviceLocation()
-            if(lastKnownLocation != null){
-                closestUdd = getClosestUdd(lastKnownLocation!!.latitude, lastKnownLocation!!.longitude)
-                val d = calcDistanceInKm(lastKnownLocation!!.latitude, lastKnownLocation!!.longitude, closestUdd!!.lat!!, closestUdd!!.lng!!)
 
-//                gMap!!.addMarker(MarkerOptions().position(LatLng(closestUdd!!.lat!!, closestUdd!!.lng!!)))
-                gMap!!.animateCamera(
-                    CameraUpdateFactory.newLatLngZoom( LatLng(closestUdd!!.lat!!, closestUdd!!.lng!!),15F )
-                )
-
-                tvUddName.text = closestUdd!!.name
-//                tvUddAddress.text = closestUdd!!.address
-                Toast.makeText(requireContext(), closestUdd!!.name + ": ${d.toString()} Km", Toast.LENGTH_LONG).show()
-            }
 
         }
 
@@ -142,17 +130,36 @@ class UddFragment : Fragment() {
             if (locationPermissionGranted) {
                 var fusedLocationProviderClient: FusedLocationProviderClient? = LocationServices.getFusedLocationProviderClient(requireContext())
 
-                val locationResult: Task<Location> = fusedLocationProviderClient!!.lastLocation
+                val locationRequest = LocationRequest()
+                locationRequest.interval = 500
+                locationRequest.fastestInterval = 500
+                locationRequest.smallestDisplacement = 170f // 170 m = 0.1 mile
+                locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
 
-                locationResult.addOnCompleteListener(requireActivity(),
-                    OnCompleteListener<Location?> { task ->
-                        if (task.isSuccessful) {
-                            lastKnownLocation = task.result
+                val locationCallback = object : LocationCallback() {
+                    override fun onLocationResult(locationResult: LocationResult?) {
+                        locationResult ?: return
+
+                        if (locationResult.locations.isNotEmpty()) {
+                            lastKnownLocation = locationResult.lastLocation
+
+                            closestUdd = getClosestUdd(lastKnownLocation!!.latitude, lastKnownLocation!!.longitude)
+                            val d = calcDistanceInKm(lastKnownLocation!!.latitude, lastKnownLocation!!.longitude, closestUdd!!.lat!!, closestUdd!!.lng!!)
+
+                            gMap!!.animateCamera(
+                                CameraUpdateFactory.newLatLngZoom( LatLng(closestUdd!!.lat!!, closestUdd!!.lng!!),15F )
+                            )
+
+                            tvUddName.text =  "Terdekat : ${closestUdd!!.name} - ${d.toString()} Km"
+                            Toast.makeText(requireContext(), closestUdd!!.name + ": ${d.toString()} Km", Toast.LENGTH_LONG).show()
                         }
-                        else{
-                            Log.e("TASK", task.exception.toString())
-                        }
-                    })
+
+                    }
+                }
+
+                fusedLocationProviderClient!!.requestLocationUpdates(locationRequest, locationCallback, null)
+
+
             } else {
                 Toast.makeText(requireContext(), "Permission Needed", Toast.LENGTH_SHORT).show()
                 getLocationPermission()
@@ -194,8 +201,11 @@ class UddFragment : Fragment() {
             if(d < distance){
                 distance = d
                 closestUdd = it
+                Log.v("Kota", it.name.toString() + ": ${d.toString()} Km")
             }
         }
+
+        Log.v("CurLoc", lat.toString() + lng.toString())
 
         return closestUdd
     }

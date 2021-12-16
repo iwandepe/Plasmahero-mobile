@@ -2,6 +2,7 @@ package com.iwan.plasmahero_mobile.ui.home
 
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -17,6 +18,7 @@ import androidx.core.content.FileProvider
 import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.iwan.plasmahero_mobile.R
 import com.iwan.plasmahero_mobile.data.source.remote.RemoteDataSource
 import com.iwan.plasmahero_mobile.data.source.remote.responses.PosterResponse
@@ -60,7 +62,22 @@ class PosterFragment : Fragment() {
                 Log.d("Response", response.toString())
                 if (response.body()?.success == true) {
                     Log.v("Response success", response.body().toString())
-                    Glide.with(requireActivity()).load(response.body()!!.data?.posterUrl).into(ivPoster)
+
+                    Glide.with(requireContext())
+                        .load(response.body()!!.data?.posterUrl)
+                        .override(ivPoster.width, ivPoster.height)
+//                        .centerCrop()
+//                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(ivPoster)
+
+//                    try {
+//                        val `in` = java.net.URL(response.body()!!.data?.posterUrl).openStream()
+//                        val image = BitmapFactory.decodeStream(`in`)
+//                            ivPoster.setImageBitmap(image)
+//                    }
+//                    catch (e: Exception) {
+//                        e.printStackTrace()
+//                    }
                 } else {
                     Log.v("Response failed", response.body().toString())
                     Toast.makeText(requireContext(), "Gagal mendapat data", Toast.LENGTH_SHORT).show()
