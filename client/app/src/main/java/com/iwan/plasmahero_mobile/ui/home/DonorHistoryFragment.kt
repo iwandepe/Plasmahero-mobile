@@ -95,10 +95,14 @@ class DonorHistoryFragment : Fragment() {
             return ViewHolder(view)
         }
 
+        @RequiresApi(Build.VERSION_CODES.O)
         override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
             viewHolder.udd.text = data[position].udd.toString()
-            viewHolder.date.text = data[position].donorDate.toString()
+
+            val dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+            val donorDate = LocalDate.parse(data[position].donorDate.toString(), dateFormat)
+            viewHolder.date.text = donorDate.dayOfMonth.toString() + " " + donorDate.month.toString() + " " + donorDate.year.toString()
         }
 
         override fun getItemCount() = data.size

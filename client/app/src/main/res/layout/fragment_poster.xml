@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.PosterFragment"
+    android:padding="@dimen/fragment_margin"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvPosterTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_fragment_title"
+        android:textStyle="bold"
+        android:text="@string/text_poster_title" />
+
+    <ImageView
+        android:id="@+id/ivPoster"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"/>
+
+    <Button
+        android:id="@+id/btnPosterShare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_share"
+        android:layout_marginTop="@dimen/large_margin"
+        android:backgroundTint="@color/yellow"
+        android:paddingHorizontal="@dimen/button_padding"
+        android:layout_gravity="center"
+        android:textColor="@color/black"/>
+
+</LinearLayout>

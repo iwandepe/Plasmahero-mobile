@@ -1,18 +1,10 @@
 package com.iwan.plasmahero_mobile.data.source.remote
 
-import android.util.Log
 import com.iwan.plasmahero_mobile.data.source.remote.api.BASE_URL
 import com.iwan.plasmahero_mobile.data.source.remote.api.DataService
-import com.iwan.plasmahero_mobile.data.source.remote.posts.DonorPost
-import com.iwan.plasmahero_mobile.data.source.remote.posts.LoginPost
-import com.iwan.plasmahero_mobile.data.source.remote.posts.RecipientPost
-import com.iwan.plasmahero_mobile.data.source.remote.posts.RegisterPost
+import com.iwan.plasmahero_mobile.data.source.remote.posts.*
 import com.iwan.plasmahero_mobile.data.source.remote.responses.*
-import com.iwan.plasmahero_mobile.utils.SessionManager
 import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.util.*
 
 object RemoteDataSource {
     fun login(data: LoginPost): Call<LoginResponse> {
@@ -70,6 +62,21 @@ object RemoteDataSource {
     fun getFaq(): Call<FaqResponse> {
         val apiService = DataService.create()
         val call = apiService.getFaqs()
+
+        return call
+    }
+
+    fun getPosterById(id: Int, token: String): Call<PosterResponse> {
+        val apiService = DataService.create()
+        val url = BASE_URL + "recipients/" + id.toString() + "/poster"
+        val call = apiService.getPosterById(url, token)
+
+        return call
+    }
+
+    fun createDonorHistory(data: DonorEvidencePost, token: String): Call<DonorEvidenceResponse> {
+        val apiService = DataService.create()
+        val call = apiService.createDonorHistory(data, token)
 
         return call
     }

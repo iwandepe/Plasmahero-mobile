@@ -30,6 +30,7 @@ import com.iwan.plasmahero_mobile.data.source.remote.responses.DonorResponse
 import com.iwan.plasmahero_mobile.utils.Helper
 import com.iwan.plasmahero_mobile.utils.SessionManager
 import com.iwan.plasmahero_mobile.utils.SessionManager.token
+import com.iwan.plasmahero_mobile.utils.SessionManager.userId
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -146,8 +147,12 @@ class DonorFormFragment : Fragment() {
         })
 
         btnSubmit.setOnClickListener(View.OnClickListener {
+            val prefs = SessionManager.getSharedPreferences(requireActivity())
+            val token = "Bearer " + prefs.token
+            val userId = prefs.userId
+
             val donorPost = DonorPost(
-                    userId = 1,
+                    userId = userId,
                     address = etAddress.text.toString(),
                     city = etCity.text.toString(),
                     age = etAge.text.toString().toIntOrNull(),
@@ -163,8 +168,6 @@ class DonorFormFragment : Fragment() {
             Log.v("POST", "Create donor")
             Log.v("VAR: donorPost", donorPost.toString())
 
-            val prefs = SessionManager.getSharedPreferences(requireActivity())
-            val token = "Bearer " + prefs.token
             val call = RemoteDataSource.createDonor(donorPost, token.toString())
             call.enqueue(object : Callback<DonorResponse> {
                 override fun onResponse(call: Call<DonorResponse>, response: Response<DonorResponse>) {
