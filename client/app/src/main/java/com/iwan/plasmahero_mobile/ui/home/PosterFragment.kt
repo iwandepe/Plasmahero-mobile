@@ -65,19 +65,8 @@ class PosterFragment : Fragment() {
 
                     Glide.with(requireContext())
                         .load(response.body()!!.data?.posterUrl)
-                        .override(ivPoster.width, ivPoster.height)
-//                        .centerCrop()
-//                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .override(500, 500)
                         .into(ivPoster)
-
-//                    try {
-//                        val `in` = java.net.URL(response.body()!!.data?.posterUrl).openStream()
-//                        val image = BitmapFactory.decodeStream(`in`)
-//                            ivPoster.setImageBitmap(image)
-//                    }
-//                    catch (e: Exception) {
-//                        e.printStackTrace()
-//                    }
                 } else {
                     Log.v("Response failed", response.body().toString())
                     Toast.makeText(requireContext(), "Gagal mendapat data", Toast.LENGTH_SHORT).show()
