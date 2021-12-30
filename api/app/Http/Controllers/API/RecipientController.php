@@ -23,7 +23,7 @@ class RecipientController extends BaseController
 
     public function getPosterUrl($id)
     {
-        $recipient = Recipient::where('id', $id)->first();
+        $recipient = Recipient::where('user_id', $id)->first();
 
         $baseUrl = env("APP_URL", "localhost:8000");
         $result['poster_url'] = $baseUrl . $recipient['generated_poster_path'];
