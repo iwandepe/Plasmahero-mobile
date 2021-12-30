@@ -48,7 +48,8 @@ class RecipientController extends Controller
 
 	public function generatePoster($data)
 	{
-		$templatePath = 'img/poster-template.png';
+		// $templatePath = 'img/poster-template.png';
+		$templatePath = 'img/revisiPoster.png';
 
 		$img = Image::make(public_path($templatePath));
 
