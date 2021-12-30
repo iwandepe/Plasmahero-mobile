@@ -15,8 +15,9 @@
         android:id="@+id/ivLoginLogo"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_plasmahero_logo"
-        android:layout_alignParentTop="true"/>
+        android:layout_alignParentTop="true"
+        app:srcCompat="@drawable/donor_mascot"
+        tools:srcCompat="@drawable/donor_mascot" />
 
     <EditText
         android:id="@+id/etLoginUsername"

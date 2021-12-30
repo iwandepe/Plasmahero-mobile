@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Plasmahero</string>
-    <string name="title_activity_login">LoginActivity</string>
+    <string name="app_name">OurPlasma</string>
+    <string name="title_activity_login">Login</string>
     <string name="title_login">Login</string>
     <string name="prompt_name">Nama</string>
     <string name="prompt_email">Email</string>
